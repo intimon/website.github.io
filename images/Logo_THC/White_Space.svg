@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="0.07 0.15 138.96 130.64" viewBox="0 0 139.02 130.8" xmlns="http://www.w3.org/2000/svg" data-type="ugc">
+    <g>
+        <path d="M114.08 35.56 68.71 9.36a4.33 4.33 0 0 0-4.32 0l-45.37 26.2a4.32 4.32 0 0 0-2.16 3.74v52.39c0 1.54.82 2.97 2.16 3.74l45.37 26.2s.11.04.16.06c.23.12.48.22.73.3.09.03.17.06.25.08.33.08.66.13 1.01.13s.69-.05 1.01-.13c.09-.02.17-.05.25-.08.26-.08.5-.18.73-.3.05-.03.11-.04.16-.06l45.37-26.2a4.32 4.32 0 0 0 2.16-3.74V39.3c0-1.54-.82-2.97-2.16-3.74ZM66.55 18.09l36.8 21.25-36.8 21.18-36.8-21.18zM25.49 46.85l36.74 21.14v42.42L25.49 89.2zm45.38 63.56V67.99l36.74-21.14V89.2z" fill="#231f20"/>
+        <path d="M55.73 70.2 30.32 55.53c-.78-.45-1.42-.08-1.43.82l-.1 7.52c-.01.9.61 2 1.39 2.45l6.73 3.89c.78.45 1.41 1.55 1.41 2.45v18.48c0 .9.64 2 1.41 2.45l6.59 3.8c.78.45 1.4.08 1.38-.81l-.43-18.77c-.02-.9.6-1.26 1.37-.81l7.1 4.1c.78.45 1.41.08 1.41-.82v-7.61c0-.9-.64-2-1.41-2.45Z" fill="#231f20"/>
+        <path d="m102.79 55.53-6.59 3.8c-.78.45-1.41 1.55-1.41 2.45v7.61c0 .9-.64 2-1.41 2.45l-6.59 3.8c-.78.45-1.4.08-1.39-.82l.1-7.69c.01-.9-.61-1.26-1.39-.82l-6.73 3.89c-.78.45-1.41 1.55-1.41 2.45V102c0 .9.64 1.26 1.41.82l6.59-3.8c.78-.45 1.41-1.55 1.41-2.45v-7.61c0-.9.64-2 1.41-2.45l6.59-3.8c.78-.45 1.41-.08 1.41.82v7.61c0 .9.64 1.26 1.41.82l6.59-3.8c.78-.45 1.41-1.55 1.41-2.45V56.36c0-.9-.64-1.26-1.41-.82Z" fill="#231f20"/>
+        <path d="m44.37 42.97 20.44 11.94c.77.45 2.05.46 2.83.01l16.32-9.31c.78-.45 1.42-1.41 1.42-2.15s-.73-1.34-1.63-1.34l-10.86.02c-.9 0-2.27.37-3.04.82l-1.88 1.09c-.78.45-2.05.45-2.83 0l-6.59-3.8c-.78-.45-.78-1.18 0-1.63l6.59-3.8c.78-.45 2.05-.45 2.83 0l1.88 1.09c.78.45 2.15.81 3.04.81h10.86c.9 0 1.64-.6 1.66-1.34.01-.74-.61-1.71-1.39-2.16l-16.05-9.27c-.78-.45-2.05-.45-2.83 0L44.39 35.93c-.78.45-1.41 1.55-1.41 2.45v2.15c0 .9.63 2 1.4 2.45Z" fill="#231f20"/>
+        <path fill="#ffffff" d="m85.43 19.05-4.47 7.39"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#ffffff" d="m85.32 19.23-.26.43"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke-dasharray="1.03 1.03" stroke="#ffffff" d="m84.53 20.54-2.93 4.85"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#ffffff" d="m81.33 25.83-.26.43"/>
+        <path fill="#ffffff" d="m84.246 18.335 2.363 1.427-.217.36-2.363-1.427z"/>
+        <path fill="#ffffff" d="m79.997 25.37 2.362 1.43-.218.359-2.361-1.429z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M66.54.36v.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M66.54 1.89v5.67"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M66.54 8.07v.5"/>
+        <path fill="#231f20" d="M67.91.15v.42h-2.76V.15z"/>
+        <path fill="#231f20" d="M67.91 8.36v.42h-2.76v-.42z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M66.54 122.37v.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M66.54 123.9v5.67"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M66.54 130.08v.5"/>
+        <path fill="#231f20" d="M67.91 122.16v.42h-2.76v-.42z"/>
+        <path fill="#231f20" d="M67.91 130.37v.42h-2.76v-.42z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M124.66 65.96h-.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M123.13 65.96h-5.67"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M116.95 65.96h-.5"/>
+        <path fill="#231f20" d="M124.88 64.58v2.76h-.43v-2.76z"/>
+        <path fill="#231f20" d="M116.67 64.58v2.76h-.43v-2.76z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M132.93 65.96h-.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M131.4 65.96h-5.67"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M125.22 65.96h-.5"/>
+        <path fill="#231f20" d="M133.14 64.58v2.76h-.43v-2.76z"/>
+        <path fill="#231f20" d="M124.93 64.58v2.76h-.43v-2.76z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M8.49 65.96h-.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M6.96 65.96H1.3"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M.78 65.96h-.5"/>
+        <path fill="#231f20" d="M8.71 64.58v2.76h-.43v-2.76z"/>
+        <path fill="#231f20" d="M.5 64.58v2.76H.07v-2.76z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M16.7 65.96h-.5"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" stroke-dasharray="1.03 1.03" d="M15.17 65.96H9.51"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M8.99 65.96h-.5"/>
+        <path fill="#231f20" d="M16.91 64.58v2.76h-.42v-2.76z"/>
+        <path fill="#231f20" d="M8.7 64.58v2.76h-.42v-2.76z"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#cdcdcf" stroke-dasharray="1" d="M132.87.25v130.3H.25V.25z"/>
+        <text transform="translate(68.65 5.88)" style="font-variation-settings:&quot;wght&quot;600" fill="#231f20" font-family="RedHatDisplayRoman-SemiBold,&quot;Red Hat Display&quot;" font-size="5" font-weight="600"><tspan y="0" x="0">x</tspan></text>
+        <path d="M135.47 62.21h2.99l-.27-.63h.44l.34.82v.31h-3.5z" fill="#231f20"/>
+        <path d="M135.42 64.7c0-.28.07-.53.21-.74s.34-.38.6-.5.55-.18.89-.18c.38 0 .72.07 1 .2s.5.32.67.56c.16.24.24.52.24.85 0 .16-.02.32-.07.48s-.12.3-.21.41l-.36-.25c.07-.1.12-.21.16-.32s.05-.23.05-.35c0-.23-.06-.42-.17-.58-.12-.16-.28-.28-.5-.37s-.48-.13-.78-.14c.16.12.29.27.38.45s.13.36.13.54c0 .23-.05.43-.14.61s-.22.31-.39.42c-.17.1-.35.15-.56.15-.22 0-.42-.05-.59-.16s-.31-.25-.41-.43q-.15-.27-.15-.63Zm1.85-.02c0-.17-.04-.34-.12-.49s-.19-.29-.33-.4c-.2.03-.37.09-.51.17-.15.08-.26.19-.34.31q-.12.195-.12.42 0 .21.09.39c.06.11.15.21.26.27.11.07.24.1.38.1s.26-.03.37-.1c.1-.06.19-.16.25-.27.06-.12.09-.25.09-.4Z" fill="#231f20"/>
+        <path d="m135.47 67.19 1.3.99 1.24-.95v.59l-.87.66.87.65v.56l-1.24-.94-1.31 1v-.58l.94-.7-.94-.71v-.57Z" fill="#231f20"/>
+        <text transform="translate(121.53 63.01)" style="font-variation-settings:&quot;wght&quot;600" fill="#231f20" font-family="RedHatDisplayRoman-SemiBold,&quot;Red Hat Display&quot;" font-size="5" font-weight="600"><tspan y="0" x="0">2 x</tspan></text>
+        <path d="m83.9 24.56 1.53-.58-.15-1.56.5.31.1 1.08 1.01-.4.48.3-1.45.55.16 1.64-.5-.31-.1-1.17-1.1.42-.48-.3Z" fill="#ffffff"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M134.43.36v.5"/>
+        <path stroke-dasharray="1 1" fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M134.43 1.86v127.58"/>
+        <path fill="none" stroke-miterlimit="10" stroke-width=".5" stroke="#231f20" d="M134.43 129.94v.5"/>
+        <path fill="#231f20" d="M135.81.15v.43h-2.76V.15z"/>
+        <path fill="#231f20" d="M135.81 130.22v.43h-2.76v-.43z"/>
+    </g>
+</svg>

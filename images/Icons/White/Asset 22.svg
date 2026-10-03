@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="0 0 31.8 37.2" viewBox="0 0 31.8 37.2" xmlns="http://www.w3.org/2000/svg" data-type="color">
+    <g>
+        <path d="M31.8 3.3 7.1 0l-.8 5.6v.7H0v30.9h23.9v-2.7l3.7.5zm-9.9 31.9H2v-27h19.9v26.9Zm2-3.8V6.2H9.3V6l.4-2.6 18.7 2.5L25 31.6h-1.1z" fill="#ffffff" data-color="1"/>
+        <path d="M13.6 10.1H4.2v5.2h9.4zm-1 4.2H5.2v-3.2h7.4z" fill="#ffffff" data-color="1"/>
+        <path d="M20.2 10.1h-5.6v7.6h5.6zm-1 6.6h-3.6v-5.6h3.6z" fill="#ffffff" data-color="1"/>
+        <path d="M4.2 33.3h16.1v-10L4.2 25.4zm1-7 14.1-1.9v7.9H5.2z" fill="#ffffff" data-color="1"/>
+        <path d="M20.5 18.8h-6.9v-2.7H4.2v8.4l16.2-2.3v-3.4Zm-1 2.5-14.3 2V17h7.4v2.7h6.9v1.5Z" fill="#ffffff" data-color="1"/>
+    </g>
+</svg>

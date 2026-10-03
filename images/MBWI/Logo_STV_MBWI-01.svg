@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="0 0 505.2 317.2" viewBox="0 0 505.2 317.2" xmlns="http://www.w3.org/2000/svg" data-type="ugc">
+    <g>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M243.7 93v20.3"/>
+        <path fill="#231f20" d="M245.3 92.7v.5h-3.2v-.5h3.2z"/>
+        <path fill="#231f20" d="M245.3 113.1v.5h-3.2v-.5h3.2z"/>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M214.1 205.9h-20.3"/>
+        <path fill="#231f20" d="M214.4 204.2v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M194 204.2v3.2h-.5v-3.2h.5z"/>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M405.8 63.9h32.8"/>
+        <path fill="#231f20" d="M406 62.3v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M438.9 62.3v3.2h-.5v-3.2h.5z"/>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M402.4 65.2v31.9"/>
+        <path fill="#231f20" d="M404 65v.5h-3.2V65h3.2z"/>
+        <path fill="#231f20" d="M404 96.9v.5h-3.2v-.5h3.2z"/>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="m247.4 222.9 10.2 17.6"/>
+        <path fill="#231f20" d="m248.64 221.878.25.433-2.771 1.6-.25-.433 2.771-1.6z"/>
+        <path fill="#231f20" d="m258.874 239.42.25.432-2.771 1.6-.25-.433 2.771-1.6z"/>
+        <path d="M161.1 296.6h12.8c0-2.3-.6-4.5-1.7-6.4l-11.1 6.4Z" stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10"/>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M239.1 296.6h-78l62.7-36.2"/>
+        <text transform="translate(176.8 293.6)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">30°</tspan></text>
+        <text transform="translate(253.7 230.4)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <text transform="translate(202.6 211.2)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <text transform="translate(246.9 104.5)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <text transform="translate(416.8 62.3)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">~1.5X</tspan></text>
+        <text transform="translate(388.6 84.4)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">~1.5X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M161.1.2v20.4"/>
+        <path fill="#231f20" d="M162.6 0v.5h-3.2V0h3.2z"/>
+        <path fill="#231f20" d="M162.6 20.3v.5h-3.2v-.5h3.2z"/>
+        <text transform="translate(164.3 11.8)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M161.1 296.6v20.3"/>
+        <path fill="#231f20" d="M162.6 296.4v.5h-3.2v-.5h3.2z"/>
+        <path fill="#231f20" d="M162.6 316.7v.5h-3.2v-.5h3.2z"/>
+        <text transform="translate(164.3 308.1)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M21.1 156.2h20.3"/>
+        <path fill="#231f20" d="M21.3 154.5v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M41.6 154.5v3.2h-.5v-3.2h.5z"/>
+        <text transform="translate(29.8 153)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M.2 156.2h20.4"/>
+        <path fill="#231f20" d="M.5 154.5v3.2H0v-3.2h.5z"/>
+        <path fill="#231f20" d="M20.8 154.5v3.2h-.5v-3.2h.5z"/>
+        <text transform="translate(9 153)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M484.7 161.9H505"/>
+        <path fill="#231f20" d="M484.9 160.3v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M505.2 160.3v3.2h-.5v-3.2h.5z"/>
+        <text transform="translate(493.4 158.7)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M463.8 161.9h20.4"/>
+        <path fill="#231f20" d="M464.1 160.3v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M484.4 160.3v3.2h-.5v-3.2h.5z"/>
+        <text transform="translate(472.6 158.7)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M243.7 204v20.3"/>
+        <path fill="#231f20" d="M245.3 203.8v.5h-3.2v-.5h3.2z"/>
+        <path fill="#231f20" d="M245.3 224.1v.5h-3.2v-.5h3.2z"/>
+        <text transform="translate(246.9 215.5)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M382.1 110.9h-20.3"/>
+        <path fill="#231f20" d="M382.4 109.3v3.2h-.5v-3.2h.5z"/>
+        <path fill="#231f20" d="M362.1 109.3v3.2h-.5v-3.2h.5z"/>
+        <text transform="translate(370.6 108.3)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">X</tspan></text>
+        <path stroke-width=".5" fill="none" stroke="#231f20" stroke-miterlimit="10" d="m111.8 243.4 49.6 28.7 47.5-27.4"/>
+        <text transform="translate(157.2 266.1)" fill="#231f20" font-family="MyriadPro-Regular,'Myriad Pro'" font-size="4.8"><tspan y="0" x="0">120°</tspan></text>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M463.6 295.6v1h-1"/>
+        <path stroke-dasharray="0 0 2 2" stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M460.6 296.6H43.8"/>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M42.8 296.6h-1v-1"/>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-dasharray="0 0 2 2" d="M41.8 293.6V22.8"/>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M41.8 21.8v-1h1"/>
+        <path stroke-dasharray="0 0 2 2" stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M44.8 20.8h416.8"/>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" d="M462.6 20.8h1v1"/>
+        <path stroke-width=".2" fill="none" stroke="#231f20" stroke-miterlimit="10" stroke-dasharray="0 0 2 2" d="M463.6 23.8v270.8"/>
+        <path d="M229.3 203.9v-90.3h44.8c6.2 0 11.6 1.1 16.3 3.2 4.7 2.2 8.4 5.1 11 9 3 4.3 4.3 9.4 3.9 15.2-.1 1.9-.6 3.9-1.3 5.6-1.9 4.5-4.9 8.1-8.9 11 5.5 3 9.5 7.1 11.9 12.5.6 1.4 1 3 1.1 4.5.5 6.4-.8 11.9-3.9 16.6-2.7 4-6.4 7.1-11.2 9.4-4.8 2.2-10.4 3.4-16.8 3.4h-47Zm22.2-54.4h21.2c3.3 0 5.8-.8 7.7-2.4 1.9-1.6 2.8-3.8 2.8-6.5s-.9-4.9-2.8-6.5c-1.9-1.6-4.5-2.4-7.7-2.4h-21.2v17.8Zm0 36.2h23.1c3.4 0 6.2-.9 8.2-2.6 2-1.7 3-4 3-7s-1-5.2-3-7c-2-1.7-4.8-2.6-8.2-2.6h-23.1v19.1Z" fill="#a0cc3a"/>
+        <path d="M441.4 203.9v-90.3h22.2v90.3h-22.2Z" fill="#2c6cb5"/>
+        <path d="M410.8 203.9h-23.5l-15.9-57.5-16 57.5h-23.5l-20.1-90.3h22.8l11 55.7 15.7-55.7h20.8l15.7 55.7L412 99.1c.2-.9-.5-1.7-1.4-1.7h-3.9c-1.3 0-1.9-1.5-1-2.4l20-27.5 12.8 28.1c.7.9 0 2.2-1.1 2.2h-4.2c-.7.1-1.2.6-1.4 1.2l-21.1 104.9Z" fill="#2c6cb5"/>
+        <path d="M113.7 203.9v-90.3h28l22.3 42.6 22.3-42.6h28v90.3h-20.9v-61.5l-29.7 55.1-29.7-55.3V204h-20.4Z" fill="#a0cc3a"/>
+        <path fill="#a0cc3a" d="m223.6 236.3-62.5 36.1-98.5-56.8V101.9L161.1 45l82.6 47.7 10.5-18.1-93.1-53.8-119.5 69v137.9l119.5 68.9 41.6-24 51.4-29.7-10.5-18.2-20 11.6z"/>
+    </g>
+</svg>

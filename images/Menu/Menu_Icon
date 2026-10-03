@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="1.5 1.5 14.05 12.67" viewBox="0 0 17.05 15.67" xmlns="http://www.w3.org/2000/svg" data-type="ugc">
+    <g>
+        <path fill="#ffffff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M1.5 7.84h14.05"/>
+        <path fill="#ffffff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M1.5 1.5h14.05"/>
+        <path fill="#ffffff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M1.5 14.17h14.05"/>
+    </g>
+</svg>
