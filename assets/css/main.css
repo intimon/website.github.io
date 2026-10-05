@@ -2,9 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /*
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Here is a wee Table of content so this CSS file get's a bit easier to read and handle!
+		
 */
 
 html, body, div, span, applet, object,
@@ -72,7 +71,7 @@ input, select, textarea {
 	appearance: none;
 }
 
-/* Basic */
+/* ----------------------- Basic ------------------------------ */
 
 	@-ms-viewport {
 		width: device-width;
@@ -174,7 +173,7 @@ input, select, textarea {
 		margin-bottom: 2em;
 	}
 
-/* Container */
+/* ---------------------- Container ---------------------------- */
 
 	.container {
 		margin: 0 auto;
@@ -214,7 +213,7 @@ input, select, textarea {
 
 		}
 
-/* Row */
+/* -------------------------- Row -------------------------- */
 
 	.row {
 		display: flex;
@@ -947,8 +946,8 @@ input, select, textarea {
 
 		}
 
+		/* --------- Row Scale 980 ------------*/
 		@media screen and (max-width: 980px) {
-
 			.row {
 				display: flex;
 				flex-wrap: wrap;
@@ -1189,9 +1188,10 @@ input, select, textarea {
 						.row.gtr-200.gtr-uniform > * {
 							padding-top: 100px;
 						}
+		} /* ------ end row witdht 980 px ------ */
 
-		}
 
+		/* -------- row width 736 px ---------- */
 		@media screen and (max-width: 736px) {
 
 			.row {
@@ -1435,9 +1435,11 @@ input, select, textarea {
 							padding-top: 60px;
 						}
 
-		}
+		}	/* ------ end row width 736 px */
 
-/* Section/Article */
+
+
+/* ------------------------- Section/Article ------------------------- */
 
 	section,
 	article {
@@ -1472,7 +1474,7 @@ input, select, textarea {
 			line-height: 1.5em;
 		}
 
-/* Table */
+/* --------------------- Table ----------------------- */
 
 	table {
 		width: 100%;
@@ -1505,7 +1507,7 @@ input, select, textarea {
 				background: #eee;
 			}
 
-/* Form */
+/* -------------------------- Form ------------------------ */
 
 	form label {
 		display: block;
@@ -1621,7 +1623,7 @@ input, select, textarea {
 			margin: 0 0 2em 0;
 		}
 
-/* Button */
+/* ---------------------------- Button ------------------------------ */
 
 	input[type="button"],
 	input[type="submit"],
@@ -1743,7 +1745,7 @@ input, select, textarea {
 				background-color: #1f232b;
 			}
 
-/* List */
+/* ---------------------- List ------------------------- */
 
 	ul {
 		list-style: disc;
@@ -1797,7 +1799,7 @@ input, select, textarea {
 			padding-left: 0.25em;
 		}
 
-/* Actions */
+/* ----------------------- Actions ------------------------ */
 
 	ul.actions {
 		list-style: none;
@@ -1823,7 +1825,7 @@ input, select, textarea {
 			text-align: center;
 		}
 
-/* Feature List */
+/* ------------------------- Feature List ------------------------- */
 
 	.feature-list {
 		max-width: 58em;
@@ -1879,8 +1881,8 @@ input, select, textarea {
 			font-size: 0.8em;
 		}
 
-/* Icons */
 
+/* ---------------------------- Icons --------------------------- */
 	.icon {
 		text-decoration: none;
 		text-decoration: none;
@@ -1916,8 +1918,8 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
-/* Box */
 
+/* ----------------------------- Box ---------------------------- */
 	.box header {
 		margin: 0 0 1.5em 0;
 	}
@@ -1951,8 +1953,8 @@ input, select, textarea {
 		margin-left: 7em;
 	}
 
-/* Wrapper */
 
+/* -------------------- Wrapper --------------------- */
 	.wrapper {
 		position: relative;
 		padding: 6em 0 9em 0;
@@ -2038,13 +2040,17 @@ input, select, textarea {
 				border: solid 10px #fff;
 			}
 
-/* Page Wrapper */
+
+
+/* ------------------ Page Wrapper --------------------- */
 
 	#page-wrapper > section {
 		margin-bottom: 0;
 	}
 
-/* Header */
+
+
+/* -------------------- Header ------------------------ */
 
 	#header {
 		display: -moz-flex;
@@ -2080,7 +2086,9 @@ input, select, textarea {
 			height: 35em;
 		}
 
-/* Logo */
+
+
+/* ----------------- Logo ---------------------- */
 
 	#logo {
 		width: 100%;
@@ -2107,7 +2115,9 @@ input, select, textarea {
 			font-size: 0.9em;
 		}
 
-/* Nav */
+
+
+/* ----------------------------------------------------- Nav Section ------------------------------------------------ */
 
 	#nav {
 		position: absolute;
@@ -2209,7 +2219,9 @@ input, select, textarea {
 				color: #fff;
 			}
 
-/* Intro */
+
+
+/* ---------------------------- Intro ------------------------- */
 
 	#intro {
 		padding-bottom: 8em;
@@ -2244,7 +2256,9 @@ input, select, textarea {
 			margin: 0 auto;
 		}
 
-/* Features */
+
+
+/* -------------------- Features ---------------------- */
 
 	#features header.style1 {
 		padding-bottom: 5em;
@@ -2267,9 +2281,10 @@ input, select, textarea {
 			letter-spacing: 0.05em;
 		}
 
-/* Main */
+/* ------------------------------- Main -------------------------------- */
+/* --------------------------------------------------------------------- */
 
-/* Footer */
+/* ---------------------------- Footer --------------------------- */
 
 	#footer {
 		background: #282b34 url("images/overlay.png");
@@ -2369,7 +2384,7 @@ input, select, textarea {
 				background: #3d4249 url("images/overlay.png");
 			}
 
-/* Copyright */
+/* ----------------- Copyright ------------------------ */
 
 	#copyright {
 		text-align: center;
@@ -2410,8 +2425,9 @@ input, select, textarea {
 				color: #fff;
 			}
 
-/* XLarge */
 
+
+/* ------------- XLarge ------------------ */
 	@media screen and (max-width: 1680px) {
 
 		/* Basic */
@@ -2422,7 +2438,7 @@ input, select, textarea {
 
 	}
 
-/* Large */
+/* ----------------- Large ---------------- */
 
 	@media screen and (max-width: 1280px) {
 
@@ -2485,7 +2501,7 @@ input, select, textarea {
 
 	}
 
-/* Medium */
+/* ------------------ Medium -------------------- */
 
 	#navPanel, #titleBar {
 		display: none;
