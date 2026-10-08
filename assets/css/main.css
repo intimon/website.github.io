@@ -1968,18 +1968,20 @@ input, select, textarea {
 			text-transform: uppercase;
 			display: block;
 			font-weight: 700;
-			letter-spacing: 0.25em;
+			letter-spacing: 0.1em;
 			font-size: 0.9em;
 			width: 25em;
-			height: 3.25em;
+			height: 4.25em;
 			top: -3.25em;
 			line-height: 3.25em;
-			margin-bottom: -3.25em;
+			margin-bottom: -4.25em;
 			margin-left: -12.5em;
 			padding-top: 0.5em;
+			border-radius: 1em;
 		}
 
-			.wrapper .title:before {
+			/*			
+ 			.wrapper .title:before {
 				content: '';
 				position: absolute;
 				bottom: -38px;
@@ -2002,16 +2004,17 @@ input, select, textarea {
 				height: 38px;
 				background: url("images/shadow.png");
 			}
+			*/
 
 		.wrapper.style1 {
 			background: #e97770 url("images/overlay.png");
-			color: #eee;
+			color: #fff;
 			color: rgba(255, 255, 255, 0.75);
 		}
 
 			.wrapper.style1 .title {
-				background: #e97770 url("images/overlay.png");
-				color: #fff;
+				background: #fff url("images/overlay.png");
+				color: #000;
 			}
 
 			.wrapper.style1 h1, .wrapper.style1 h2, .wrapper.style1 h3, .wrapper.style1 h4, .wrapper.style1 h5, .wrapper.style1 h6, .wrapper.style1 strong, .wrapper.style1 b, .wrapper.style1 a {
@@ -2092,27 +2095,28 @@ input, select, textarea {
 
 	#logo {
 		width: 100%;
-		text-align: center;
+		margin-left: 60%;
+		text-align: left;
 		position: relative;
 		top: 1.5em;
+		right: 1.5em;
 	}
 
 		#logo h1 {
-			font-weight: 900;
-			text-transform: uppercase;
-			color: #fff;
+			font-weight: 600;
+			/* color: #4673aa ; */
+			color: rgba(70, 115, 170, 1);
 			font-size: 2em;
-			letter-spacing: 0.25em;
+			/*letter-spacing: 0.25em;*/
 		}
 
 		#logo p {
-			color: #eee;
-			color: rgba(255, 255, 255, 0.5);
-			text-transform: uppercase;
+			color: rgba(255, 255, 255, 1);
+			/* color: #4673aa ; */
 			margin: 1.25em 0 0 0;
 			display: block;
-			letter-spacing: 0.2em;
-			font-size: 0.9em;
+			/*letter-spacing: 0.2em;*/
+			font-size: 1em;
 		}
 
 
@@ -2122,12 +2126,13 @@ input, select, textarea {
    ========================================================= */
 
 #nav {
-    position: absolute;
+    position: fixed;
     display: block;
     top: 2.5em;
     left: 0;
     width: 100%;
     text-align: center;
+	z-index: 1000;
 }
 
 
@@ -2141,7 +2146,7 @@ input, select, textarea {
     align-items: center;
 
     background: #fff;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     border-radius: 0.35em;
 
     padding: 0 1.5em;
@@ -2231,35 +2236,11 @@ input, select, textarea {
 
 #nav > ul > li.nav-logo {
     position: relative;
-
     padding: 0 1.5em;
 
     /* Allows the logo to extend outside the nav */
     z-index: 5;
 }
-
-
-/* White area behind the logo.
-   This hides the navigation border behind it. */
-
-#nav > ul > li.nav-logo::before {
-    content: "";
-
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 7em;
-    height: 7em;
-
-    transform: translate(-50%, -50%);
-
-    background: #fff;
-
-    z-index: 1;
-}
-
 
 /* Logo link */
 
@@ -2283,8 +2264,8 @@ input, select, textarea {
 
     display: block;
 
-    width: 6em;
-    height: 6em;
+    width: 8em;
+    height: 8em;
 
     object-fit: contain;
 
