@@ -2566,6 +2566,22 @@ input, select, textarea {
     min-height: 0 !important;
     flex: 0 1 33.333% !important;
     align-self: flex-start !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform-origin: center center;
+}
+
+@media (hover: hover) {
+    .project-card:hover {
+        transform: scale(1.025);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        z-index: 2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        transition: none;
+    }
 }
 
 /* 16:9 project image */
@@ -2746,10 +2762,375 @@ input, select, textarea {
 			letter-spacing: 0.05em;
 		}
 
+
+/* ========================================
+   PROJECT FEATURE CARDS
+======================================== */
+
+.project-feature-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 4%;
+	align-items: start;
+
+	width: 84%;
+	max-width: 800px;
+	
+	margin: 0 auto;
+	padding: 55px 0;
+	box-sizing: border-box;
+
+}
+
+.project-feature-grid > div {
+    min-width: 0;
+}
+
+.project-feature-card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #d8dadd;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    transform: scale(1);
+    transform-origin: center center;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    position: relative;
+    z-index: 0;
+}
+
+.project-feature-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    margin: 0 0 18px;
+    border-radius: 3px;
+}
+
+.project-feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.project-feature-title {
+    margin: 0 0 6px;
+    color: #292d33;
+    font-size: 1.3em;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: left;
+}
+
+.project-feature-description {
+    margin: 0 0 8px;
+    color: #555b64;
+    font-size: 0.95em;
+    line-height: 1.5;
+    text-align: left;
+
+    /* Keep the description to one line */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.project-feature-date {
+    margin: 0;
+    color: #858990;
+    font-size: 0.85em;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.project-feature-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.project-feature-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 22px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border-radius: 5px;
+	color: var(--project-accent-color);
+    background: #ffffff;
+    border: 1px solid var(--project-accent-color);
+
+    font-size: 0.9em;
+    text-decoration: none;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+	
+}
+
+.project-feature-button:hover {
+    color: #ffffff;
+    background: var(--project-accent-color);
+    border-color: var(--project-accent-color);
+}
+
+/* Card hover effect */
+
+@media (hover: hover) {
+    .project-feature-card:hover {
+        transform: scale(1.02);
+        border-color: var(--project-accent-color);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        z-index: 2;
+    }
+}
+
+/* Keyboard accessibility */
+
+.project-feature-card:focus-within {
+    border-color: #737780;
+}
+
+/* Responsive layout */
+
+/* Tablet: keep two cards per row */
+@media screen and (max-width: 980px) {
+	.project-feature-grid {
+	width: 88%;
+	gap: 4%;
+	padding: 40px 0;
+	}
+}
+
+/* Phone: one card per row */
+@media screen and (max-width: 600px) {
+.project-feature-grid {
+	grid-template-columns: 1fr;
+	width: 88%;
+	gap: 32px;
+	padding: 30px 0;
+	}
+}
+
+.project-feature-card {
+    padding: 10px;
+}
+
+
 /* ------------------------------- Main -------------------------------- */
 /* --------------------------------------------------------------------- */
 
+/* ========================================
+   SITE FOOTER
+======================================== */
+
+.site-footer {
+    width: 100%;
+    background: rgba(70, 115, 170, 0.5);;
+    box-sizing: border-box;
+}
+
+.footer-inner {
+    width: 84%;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 90px 0 65px;
+    box-sizing: border-box;
+	backbackground-color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Left side: Contact */
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.footer-contact-label {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.footer-email {
+    color: #fff;
+    font-size: 1.15em;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-email:hover {
+    color: #777b81;
+}
+
+/* Social icon boxes */
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.footer-social-link {
+    display: block;
+    width: 10px;
+    height: 10px;
+    box-sizing: border-box;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.footer-social-link:hover {
+    transform: translateY(-3px);
+}
+
+/* Right side: Logo and copyright */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    box-sizing: border-box;
+}
+
+.footer-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.footer-copyright {
+    margin: 0;
+    color: #fff;
+    font-size: 0.85em;
+    line-height: 1.5;
+    text-align: right;
+}
+
+/* Keyboard accessibility */
+
+.footer-social-link:focus-visible,
+.footer-email:focus-visible,
+.footer-logo-link:focus-visible {
+    outline: 2px solid #292d33;
+    outline-offset: 4px;
+}
+
+.footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.footer-social-link img,
+.footer-social-link svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Phone layout */
+
+@media screen and (max-width: 600px) {
+    .footer-inner {
+        width: 88%;
+        padding: 60px 0 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 45px;
+    }
+
+    .footer-email {
+        font-size: 1.05em;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-socials {
+        margin-top: 26px;
+        gap: 12px;
+    }
+
+    .footer-social-link {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-brand {
+        align-items: flex-start;
+    }
+
+    .footer-logo-link {
+        width: 100px;
+        height: 100px;
+    }
+
+    .footer-copyright {
+        text-align: left;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-email,
+    .footer-social-link {
+        transition: none;
+    }
+}
+
+
 /* ---------------------------- Footer --------------------------- */
+
+
 
 	#footer {
 		/*background: #282b34 url("images/overlay.png");*/
