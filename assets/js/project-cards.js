@@ -1,9 +1,6 @@
  (function($) {
-
-const projectCardTheme = {
-    accentColor: "#292d33"
-};
 	 
+
 const projects = {
     "dreamweaver": {
         title: "Dreamweaver",
@@ -57,20 +54,38 @@ const projects = {
 };
 
 	 
-	 
 function createProjectCard(project) {
     const card = document.createElement("article");
     card.className = "project-feature-card";
 
-	card.style.setProperty(
-    "--project-accent-color",
-    projectCardTheme.accentColor
-	);
-	
-    const image = document.createElement("img");
-    image.className = "project-feature-image";
-    image.src = project.image;
-    image.alt = project.title;
+    card.style.setProperty(
+        "--project-accent-color",
+        project.accentColor || "#292d33"
+    );
+    
+    // Video or Image Selection Logic
+        const mediaPath = project.image;
+        const isVideo = /\.(mp4|webm|mov)(?:$|[?#])/i.test(mediaPath);
+
+        let media;
+
+        if (isVideo) {
+            media = document.createElement("video");
+            media.src = mediaPath;
+            media.autoplay = true;
+            media.muted = true;
+            media.loop = true;
+            media.playsInline = true;
+            media.preload = "metadata";
+            media.setAttribute("aria-label", project.alt || project.title);
+        } else {
+            media = document.createElement("img");
+            media.src = mediaPath;
+            media.alt = project.alt || project.title;
+            media.loading = "lazy";
+        }
+
+media.className = "project-feature-image";
 
     const content = document.createElement("div");
     content.className = "project-feature-content";
@@ -98,7 +113,7 @@ function createProjectCard(project) {
 
     content.append(title, description, date);
     footer.append(button);
-    card.append(image, content, footer);
+    card.append(media, content, footer);
 
     return card;
 }

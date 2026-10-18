@@ -25,13 +25,34 @@
 		});
 
 	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			alignment: 'center',
-			detach: false
-		});
+		function initializeDropdowns() {
+			const nav = document.querySelector('#nav > ul');
 
+			if (!nav || !window.jQuery || !jQuery.fn.dropotron) {
+				return;
+			}
+
+			// Prevent accidental duplicate initialization.
+			if (jQuery(nav).data('dropotron-initialized')) {
+				return;
+			}
+
+			jQuery(nav).data('dropotron-initialized', true);
+
+			jQuery(nav).dropotron({
+				mode: 'fade',
+				noOpenerFade: true,
+				alignment: 'left',
+				detach: true,
+				offsetX: 0,
+				offsetY: 0,
+				globalOffsetY: 0
+			});
+		}
+
+		document.addEventListener('siteHeaderLoaded', initializeDropdowns);
+
+	
 	// Nav.
 
 		// Title Bar.
