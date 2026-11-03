@@ -4,14 +4,21 @@
         "graphic-design-showreel": {
             title: "Showreel",
             videoId: "Ko4jae5adSQ",
-            accentColor: "var(--color-blue)",
+            accentColor: "rgb(155, 195, 55)",
         },
 
         "animation-showreel": {
             title: "Animation Showreel",
-            videoId: "YOUR_OTHER_VIDEO_ID",
-            accentColor: "rgb(155, 195, 55)"
-        }
+            videoId: "5FMmK0JhUFo",
+            accentColor: "var(--color-blue)"
+        },
+        
+        "previs-showreel": {
+            title: "Previs Showreel",
+            videoId: "4V3KFBOcSGY",
+            accentColor: "var(--color-blue)"
+        },
+        
     };
 
     function createShowreelCard(showreel) {
