@@ -19,6 +19,43 @@
             accentColor: "var(--color-blue)"
         },
         
+        "film-showreel": {
+            title: "Film & VFX Showreel",
+            videoId: "Fj1FPyDKMnM",
+            accentColor: "var(--color-blue)"
+        },
+        
+        "techart-showreel": {
+            title: "Technical Art Showreel",
+            videoId: "HVb4LjsR5Kw",
+            accentColor: "var(--color-blue)"
+        },
+        
+        
+        
+        
+        //---------------------------------------
+        //Project Showreels
+        //---------------------------------------
+
+        "Snare": {
+            title: "Snare",
+            videoId: "McgLZjzyqPA",
+            accentColor: "var(--color-blue)"
+        },
+        
+        //Attribute Manager -------------------------
+        "Attribute Manager": {
+            title: "Attribute Manager",
+            videoId: "18OTPJGTL9A",
+            accentColor: "var(--color-blue)"
+        },
+        
+        "Wulver": {
+            title: "Wulver",
+            videoId: "QHq1xXLYDUY",
+            accentColor: "var(--color-blue)"
+        },
     };
 
     function createShowreelCard(showreel) {
@@ -41,7 +78,9 @@
         video.className = "showreel-video";
         video.src =
             `https://www.youtube-nocookie.com/embed/${encodeURIComponent(showreel.videoId)}`;
-
+        
+        
+        
         video.title = showreel.title;
         video.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
         video.allowFullscreen = true;

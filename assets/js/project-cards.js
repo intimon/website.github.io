@@ -8,7 +8,7 @@ const projects = {
         date: "September 2024",
         image: "images/Dreamweaver/Dreamweaver.png",
         link: "dreamweaver.html",
-		accentColor: "#fff",
+		accentColor: "#5f04ac",
     },
 
     "MBWI": {
@@ -28,7 +28,7 @@ const projects = {
         image: "images/Free/Free_Video.mov",
 		alt: "Masters Project: Free",
         link: "free.html",
-		accentColor: "#b85c38",
+		accentColor: "#9466a8",
     },
 
 	"Snare": {
@@ -38,7 +38,7 @@ const projects = {
         image: "images/Snare/Foot.mp4",
 		alt: "Snare: Warhammer Fan Animation",
         link: "snare.html",
-		accentColor: "#b85c38",
+		accentColor: "#d02681",
     },
 
 	"Attribute Manager": {
@@ -48,9 +48,41 @@ const projects = {
         image: "images/Attribute_Manager/Attribute_Manager.png",
 		alt: "Attribute Manager",
         link: "attribute_manager.html",
-		accentColor: "#b85c38",
+		accentColor: "#5d7ce1",
     },
 	
+    // Featured Projects
+    "RTR": {
+        title: "Realtime Roads",
+        description: "by Morgan Skillicorn",
+        date: "Role: DoP & Camera Work",
+        image: "images/RTR/Morgan_car.png",
+		alt: "Realtime Roads by Morgan Skillicorn",
+        link: "https://www.youtube.com/watch?v=BWxVeWIF-lQ",
+		accentColor: "#3a186f",
+    },
+    
+    
+    
+	"Maja": {
+        title: "The Essence - Music Video",
+        description: "by Maja Oszczypała",
+        date: "Role: DoP & Camera Work",
+        image: "images/Maja/Maja.png",
+		alt: "The Essence - Music Video",
+        link: "https://www.youtube.com/watch?v=UuvOBrjxg_0",
+		accentColor: "#e5183f",
+    },
+
+	"Dave": {
+        title: "Shortfilm Production",
+        description: "by David Muddie",
+        date: "Role: VP Operator",
+        image: "images/Dave_Mudie/Shortfilm_Mudie.png",
+		alt: "Attribute Manager",
+        link: "attribute_manager.html",
+		accentColor: "#b85c38",
+        },
 };
 
 	 
