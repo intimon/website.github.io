@@ -4089,9 +4089,10 @@ input, select, textarea {
     }
 
 	
-	/* -----------------------------------------------
-   Mobile navigation defaults
------------------------------------------------- */
+	/* ================================================
+   NEW MOBILE NAVIGATION
+   Overrides previous mobile navigation styles
+================================================ */
 
 #navPanel,
 #titleBar {
@@ -4100,23 +4101,12 @@ input, select, textarea {
 
 @media screen and (max-width: 980px) {
 
-    /* Keep desktop navigation out of the mobile layout. */
     #nav {
-        display: none;
+        display: none !important;
     }
-
-    #page-wrapper {
-        backface-visibility: hidden;
-        transition: transform 0.5s ease;
-        padding-bottom: 1px;
-    }
-
-    /* -------------------------------------------
-       Mobile top bar
-    -------------------------------------------- */
 
     #titleBar {
-        display: flex;
+        display: flex !important;
         position: fixed;
         top: 0;
         left: 0;
@@ -4132,19 +4122,16 @@ input, select, textarea {
     }
 
     #titleBar .toggle {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
-        position: relative;
-        left: auto;
-        top: auto;
-        width: 2.5em;
+        position: static;
+        width: 2.5em !important;
         height: 2.5em;
         min-width: 2.5em;
         margin: 0;
         padding: 0;
         border: 0;
-        border-radius: 4px;
         background: transparent;
         color: inherit;
         font-size: 1.25em;
@@ -4167,18 +4154,13 @@ input, select, textarea {
     }
 
     #titleBar .mobile-home img {
-        display: block;
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
 
-    /* -------------------------------------------
-       Mobile navigation panel
-    -------------------------------------------- */
-
     #navPanel {
-        display: block;
+        display: block !important;
         position: fixed;
         top: 0;
         left: 0;
@@ -4207,10 +4189,9 @@ input, select, textarea {
     }
 
     #navPanel .mobile-nav-item {
-        display: block;
         margin: 0;
         padding: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     #navPanel .mobile-nav-row {
@@ -4229,16 +4210,14 @@ input, select, textarea {
         padding: 0.7em 1em;
         color: #fff;
         font-size: 0.95em;
-        line-height: 1.4;
         text-decoration: none;
     }
 
     #navPanel .mobile-nav-link:hover {
         color: #ddd;
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(255,255,255,0.06);
     }
 
-    /* Nested levels are indented. */
     #navPanel .mobile-nav-item.depth-1 > .mobile-nav-row {
         padding-left: 0.75em;
     }
@@ -4259,13 +4238,12 @@ input, select, textarea {
         padding-left: 3.75em;
     }
 
-    /* Separate expand/collapse button. */
     #navPanel .mobile-submenu-toggle {
-        display: flex;
+        display: flex !important;
         flex: 0 0 3em;
         align-items: center;
         justify-content: center;
-        width: 3em;
+        width: 3em !important;
         min-width: 3em;
         max-width: 3em;
         min-height: 3em;
@@ -4279,17 +4257,12 @@ input, select, textarea {
     }
 
     #navPanel .mobile-submenu-toggle:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255,255,255,0.08);
     }
 
     #navPanel .mobile-submenu {
-        padding: 0;
-        background: rgba(0, 0, 0, 0.12);
+        background: rgba(0,0,0,0.12);
     }
-
-    /* -------------------------------------------
-       Open menu state
-    -------------------------------------------- */
 
     body.navPanel-visible #navPanel {
         transform: translateX(0);
