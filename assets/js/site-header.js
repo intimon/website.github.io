@@ -205,6 +205,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             panel.appendChild(mainList);
 
+            const panelLogo = document.createElement("a");
+            panelLogo.className = "mobile-panel-logo";
+            panelLogo.href = resolveSitePath("index.html");
+            panelLogo.setAttribute("aria-label", "Home");
+
+            const logoImage = document.createElement("img");
+            logoImage.src = resolveSitePath("images/Logo_THC/Logo_White.svg");
+            logoImage.alt = "Home";
+
+            panelLogo.appendChild(logoImage);
+            panel.insertBefore(panelLogo, mainList);
+            
             // -----------------------------------------------
             // Mobile title bar
             // -----------------------------------------------
