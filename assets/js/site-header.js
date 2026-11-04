@@ -6,12 +6,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const SITE_BASE = new URL("/website.github.io/", window.location.origin);
 
-    // Resolve local paths relative to the site root.
     function resolveSitePath(path) {
-
         if (!path) return "";
 
-        // Leave external URLs and special URLs unchanged.
         if (
             /^(https?:)?\/\//i.test(path) ||
             /^(data:|blob:|mailto:|tel:|#)/i.test(path)
@@ -19,12 +16,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             return path;
         }
 
-        // Avoid duplicating the site base path.
         if (path.startsWith(SITE_BASE.pathname)) {
             return new URL(path, window.location.origin).href;
         }
 
-        // Remove leading slashes and relative navigation segments.
         const cleanPath = path
             .replace(/^(\.\.\/)+/, "")
             .replace(/^(\.\/)+/, "")
@@ -42,11 +37,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (!container) return;
 
     const banner = resolveSitePath(container.dataset.banner || "");
-
-    const bannerType = (
-        container.dataset.bannerType || "image"
-    ).trim().toLowerCase();
-
+    const bannerType = (container.dataset.bannerType || "image")
+        .trim()
+        .toLowerCase();
     const poster = resolveSitePath(container.dataset.poster || "");
 
     const title = container.dataset.title || "";
@@ -59,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         // -----------------------------------------------
 
         const headerURL = resolveSitePath("components/header.html");
-
         const response = await fetch(headerURL);
 
         if (!response.ok) {
@@ -78,80 +70,146 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (!desktopNav) return;
 
-            // Remove existing mobile navigation if present.
             document.querySelector("#navPanel")?.remove();
             document.querySelector("#titleBar")?.remove();
 
-            // Create mobile navigation panel.
             const panel = document.createElement("nav");
-
             panel.id = "navPanel";
             panel.setAttribute("aria-label", "Mobile navigation");
 
-            // Recursively copy navigation links.
-            function addLinks(list, depth = 0) {
+            let submenuCounter = 0;
 
-                Array.from(list.children).forEach(item => {
+            // Build only explicitly enabled navigation items.
+            function buildNavigationItem(item, depth = 0) {
 
-                    if (item.tagName !== "LI") return;
+                if (
+                    item.tagName !== "LI" ||
+                    item.dataset.mobile !== "show" ||
+                    item.classList.contains("nav-logo")
+                ) {
+                    return null;
+                }
 
-                    // Skip the desktop logo.
-                    if (item.classList.contains("nav-logo")) return;
+                const originalLink = Array.from(item.children)
+                    .find(child => child.tagName === "A");
 
-                    const link = Array.from(item.children)
-                        .find(child => child.tagName === "A");
+                const originalSubmenu = Array.from(item.children)
+                    .find(child => child.tagName === "UL");
 
-                    if (link) {
+                const listItem = document.createElement("li");
+                listItem.className = `mobile-nav-item depth-${depth}`;
 
-                        const mobileLink = document.createElement("a");
+                // Build eligible children first. A child cannot appear
+                // unless this parent is also explicitly marked "show".
+                const childItems = [];
 
-                        mobileLink.className = "link";
+                if (originalSubmenu) {
+                    Array.from(originalSubmenu.children).forEach(child => {
+                        const builtChild = buildNavigationItem(child, depth + 1);
 
-                        if (depth === 0) {
-                            mobileLink.classList.add("depth-0");
+                        if (builtChild) {
+                            childItems.push(builtChild);
                         }
+                    });
+                }
 
-                        if (link.hasAttribute("href")) {
-                            mobileLink.href = link.getAttribute("href");
-                        }
+                const hasVisibleChildren = childItems.length > 0;
 
-                        // Add indentation for nested links.
-                        if (depth > 0) {
+                const row = document.createElement("div");
+                row.className = "mobile-nav-row";
 
-                            const indent = document.createElement("span");
+                const label = originalLink
+                    ? originalLink.textContent.trim()
+                    : item.textContent.trim();
 
-                            indent.className = `indent-${Math.min(depth, 5)}`;
+                const href = originalLink?.getAttribute("href") || "";
 
-                            mobileLink.appendChild(indent);
-                        }
+                // Real links remain clickable. "#" category labels
+                // are rendered as labels instead of navigating to the top.
+                if (href && href !== "#") {
 
-                        mobileLink.appendChild(
-                            document.createTextNode(link.textContent.trim())
-                        );
+                    const mobileLink = document.createElement("a");
 
-                        panel.appendChild(mobileLink);
+                    mobileLink.className = "mobile-nav-link";
+                    mobileLink.textContent = label;
+                    mobileLink.href = resolveSitePath(href);
+
+                    row.appendChild(mobileLink);
+
+                } else {
+
+                    const mobileLabel = document.createElement("span");
+
+                    mobileLabel.className = "mobile-nav-label";
+                    mobileLabel.textContent = label;
+
+                    row.appendChild(mobileLabel);
+                }
+
+                // Add an independent expand/collapse button when
+                // this item has visible children.
+                if (hasVisibleChildren) {
+
+                    submenuCounter++;
+
+                    const submenuId = `mobile-submenu-${submenuCounter}`;
+
+                    const submenuToggle = document.createElement("button");
+
+                    submenuToggle.type = "button";
+                    submenuToggle.className = "mobile-submenu-toggle";
+                    submenuToggle.textContent = "+";
+                    submenuToggle.setAttribute("aria-expanded", "false");
+                    submenuToggle.setAttribute("aria-controls", submenuId);
+                    submenuToggle.setAttribute(
+                        "aria-label",
+                        `Expand ${label} submenu`
+                    );
+
+                    row.appendChild(submenuToggle);
+
+                    const submenu = document.createElement("ul");
+
+                    submenu.id = submenuId;
+                    submenu.className = "mobile-submenu";
+                    submenu.hidden = true;
+
+                    childItems.forEach(child => submenu.appendChild(child));
+
+                    listItem.appendChild(row);
+                    listItem.appendChild(submenu);
+
+                } else {
+
+                    listItem.appendChild(row);
+                }
+
+                return listItem;
+            }
+
+            // Create the mobile menu's root list.
+            const mainList = document.createElement("ul");
+            mainList.className = "mobile-nav-list";
+
+            const desktopList = desktopNav.querySelector(":scope > ul");
+
+            if (desktopList) {
+                Array.from(desktopList.children).forEach(item => {
+                    const builtItem = buildNavigationItem(item);
+
+                    if (builtItem) {
+                        mainList.appendChild(builtItem);
                     }
-
-                    // Find nested submenu.
-                    const submenu = Array.from(item.children)
-                        .find(child => child.tagName === "UL");
-
-                    if (submenu) {
-                        addLinks(submenu, depth + 1);
-                    }
-
                 });
             }
 
-            const mainList = desktopNav.querySelector(":scope > ul");
+            panel.appendChild(mainList);
 
-            if (mainList) {
-                addLinks(mainList);
-            }
+            // -----------------------------------------------
+            // Mobile title bar
+            // -----------------------------------------------
 
-            // Create mobile title bar and toggle.
             const titleBar = document.createElement("div");
-
             titleBar.id = "titleBar";
 
             const toggle = document.createElement("button");
@@ -160,73 +218,128 @@ document.addEventListener("DOMContentLoaded", async function () {
             toggle.className = "toggle";
             toggle.setAttribute("aria-label", "Open navigation");
             toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-controls", "navPanel");
 
             titleBar.appendChild(toggle);
 
-            // Add elements directly to body.
-            document.body.appendChild(titleBar);
+            // Home logo on the right side of the mobile title bar.
+            const homeLink = document.createElement("a");
+
+            homeLink.className = "mobile-home";
+            homeLink.href = resolveSitePath("index.html");
+            homeLink.setAttribute("aria-label", "Home");
+
+            const homeImage = document.createElement("img");
+
+            homeImage.src = resolveSitePath(
+                "images/Logo_THC/Logo_Navigation.svg"
+            );
+            homeImage.alt = "Home";
+
+            homeLink.appendChild(homeImage);
+            titleBar.appendChild(homeLink);
+
             document.body.appendChild(panel);
+            document.body.appendChild(titleBar);
 
             // -----------------------------------------------
-            // Open and close navigation
+            // Open and close main navigation
             // -----------------------------------------------
 
-            toggle.addEventListener("click", function (event) {
+            function closeNavigation() {
+                document.body.classList.remove("navPanel-visible");
 
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.setAttribute("aria-label", "Open navigation");
+            }
+
+            function openNavigation() {
+                document.body.classList.add("navPanel-visible");
+
+                toggle.setAttribute("aria-expanded", "true");
+                toggle.setAttribute("aria-label", "Close navigation");
+            }
+
+            toggle.addEventListener("click", event => {
                 event.preventDefault();
-
-                const currentlyOpen = document.body.classList.contains(
-                    "navPanel-visible"
-                );
-
-                document.body.classList.toggle(
-                    "navPanel-visible",
-                    !currentlyOpen
-                );
 
                 const isOpen = document.body.classList.contains(
                     "navPanel-visible"
                 );
 
-                toggle.setAttribute("aria-expanded", String(isOpen));
-
-                toggle.setAttribute(
-                    "aria-label",
-                    isOpen ? "Close navigation" : "Open navigation"
-                );
-
+                if (isOpen) {
+                    closeNavigation();
+                } else {
+                    openNavigation();
+                }
             });
 
-            // Close panel after selecting a link.
+            // -----------------------------------------------
+            // Expand and collapse nested submenus
+            // -----------------------------------------------
+
             panel.addEventListener("click", event => {
 
-                if (event.target.closest("a")) {
+                const submenuToggle = event.target.closest(
+                    ".mobile-submenu-toggle"
+                );
 
-                    document.body.classList.remove("navPanel-visible");
+                if (submenuToggle) {
 
-                    toggle.setAttribute("aria-expanded", "false");
-                    toggle.setAttribute("aria-label", "Open navigation");
+                    event.preventDefault();
 
+                    const submenuId = submenuToggle.getAttribute(
+                        "aria-controls"
+                    );
+
+                    const submenu = document.getElementById(submenuId);
+
+                    if (!submenu) return;
+
+                    const isExpanded =
+                        submenuToggle.getAttribute("aria-expanded") === "true";
+
+                    submenu.hidden = isExpanded;
+
+                    submenuToggle.setAttribute(
+                        "aria-expanded",
+                        String(!isExpanded)
+                    );
+
+                    submenuToggle.textContent = isExpanded ? "+" : "−";
+
+                    const itemLabel = submenuToggle
+                        .closest(".mobile-nav-row")
+                        ?.querySelector(".mobile-nav-link, .mobile-nav-label")
+                        ?.textContent.trim() || "submenu";
+
+                    submenuToggle.setAttribute(
+                        "aria-label",
+                        `${isExpanded ? "Expand" : "Collapse"} ${itemLabel} submenu`
+                    );
+
+                    return;
                 }
 
+                // Selecting a real page link closes the main menu.
+                if (event.target.closest(".mobile-nav-link")) {
+                    closeNavigation();
+                }
             });
 
-            // Close panel with Escape.
+            // -----------------------------------------------
+            // Close navigation with Escape
+            // -----------------------------------------------
+
             document.addEventListener("keydown", event => {
 
                 if (event.key === "Escape") {
-
-                    document.body.classList.remove("navPanel-visible");
-
-                    toggle.setAttribute("aria-expanded", "false");
-                    toggle.setAttribute("aria-label", "Open navigation");
-
+                    closeNavigation();
                 }
 
             });
 
             console.log("Mobile navigation created successfully.");
-
         }
 
         createMobileNavigation();
@@ -235,7 +348,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Header elements
         // -----------------------------------------------
 
-        const header = container.querySelector("#header");
         const bannerElement = container.querySelector("#header-banner");
         const logo = container.querySelector("#logo");
 
@@ -251,8 +363,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (bannerType === "video") {
 
                 if (poster) {
-                    bannerElement.style.backgroundImage =
-                        `url("${poster}")`;
+                    bannerElement.style.backgroundImage = `url("${poster}")`;
                 }
 
                 const video = document.createElement("video");
@@ -270,31 +381,22 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
 
                 video.addEventListener("error", () => {
-
                     console.error(
                         "Banner video failed to load:",
                         banner,
                         video.error
                     );
-
                 });
 
                 bannerElement.appendChild(video);
 
                 video.play().catch(error => {
-
-                    console.warn(
-                        "Banner video could not play:",
-                        error
-                    );
-
+                    console.warn("Banner video could not play:", error);
                 });
 
             } else {
 
-                bannerElement.style.backgroundImage =
-                    `url("${banner}")`;
-
+                bannerElement.style.backgroundImage = `url("${banner}")`;
             }
 
             console.log("Banner path:", banner);
@@ -302,7 +404,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (poster) {
                 console.log("Poster path:", poster);
             }
-
         }
 
         // -----------------------------------------------
@@ -330,7 +431,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
 
         console.error("Header loading failed:", error);
-
     }
 
 });

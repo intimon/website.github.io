@@ -3996,15 +3996,6 @@ input, select, textarea {
         pointer-events: none;
     }
 
-    /* Banner overlay */
-
-    #header-banner::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-    }
 
     /* Keep banner text above the media and overlay */
 
@@ -4080,5 +4071,217 @@ input, select, textarea {
 	
 }
 
+
+/* -----------------------------------------------
+   Mobile navigation defaults
+------------------------------------------------ */
+
+#navPanel,
+#titleBar {
+    display: none;
+}
+
+@media screen and (max-width: 980px) {
+
+    /* Keep desktop navigation out of the mobile layout. */
+    #nav {
+        display: none;
+    }
+
+    #page-wrapper {
+        backface-visibility: hidden;
+        transition: transform 0.5s ease;
+        padding-bottom: 1px;
+    }
+
+    /* -------------------------------------------
+       Mobile top bar
+    -------------------------------------------- */
+
+    #titleBar {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5em;
+        z-index: 10004;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.75em;
+        box-sizing: border-box;
+        pointer-events: none;
+        transition: transform 0.5s ease;
+    }
+
+    #titleBar .toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 2.5em;
+        height: 2.5em;
+        min-width: 2.5em;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 4px;
+        background: transparent;
+        color: inherit;
+        font-size: 1.25em;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    #titleBar .toggle::before {
+        content: "\2630";
+        display: block;
+    }
+
+    #titleBar .mobile-home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5em;
+        height: 2.5em;
+        pointer-events: auto;
+    }
+
+    #titleBar .mobile-home img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* -------------------------------------------
+       Mobile navigation panel
+    -------------------------------------------- */
+
+    #navPanel {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 275px;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 4em 0 1em;
+        background: #242730 url("images/overlay.png");
+        color: #fff;
+        z-index: 10003;
+        transform: translateX(-275px);
+        transition: transform 0.5s ease;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #navPanel [hidden] {
+        display: none !important;
+    }
+
+    #navPanel .mobile-nav-list,
+    #navPanel .mobile-submenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #navPanel .mobile-nav-item {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #navPanel .mobile-nav-row {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        min-height: 3em;
+    }
+
+    #navPanel .mobile-nav-link,
+    #navPanel .mobile-nav-label {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        min-width: 0;
+        padding: 0.7em 1em;
+        color: #fff;
+        font-size: 0.95em;
+        line-height: 1.4;
+        text-decoration: none;
+    }
+
+    #navPanel .mobile-nav-link:hover {
+        color: #ddd;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Nested levels are indented. */
+    #navPanel .mobile-nav-item.depth-1 > .mobile-nav-row {
+        padding-left: 0.75em;
+    }
+
+    #navPanel .mobile-nav-item.depth-2 > .mobile-nav-row {
+        padding-left: 1.5em;
+    }
+
+    #navPanel .mobile-nav-item.depth-3 > .mobile-nav-row {
+        padding-left: 2.25em;
+    }
+
+    #navPanel .mobile-nav-item.depth-4 > .mobile-nav-row {
+        padding-left: 3em;
+    }
+
+    #navPanel .mobile-nav-item.depth-5 > .mobile-nav-row {
+        padding-left: 3.75em;
+    }
+
+    /* Separate expand/collapse button. */
+    #navPanel .mobile-submenu-toggle {
+        display: flex;
+        flex: 0 0 3em;
+        align-items: center;
+        justify-content: center;
+        width: 3em;
+        min-width: 3em;
+        max-width: 3em;
+        min-height: 3em;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 1.3em;
+        cursor: pointer;
+    }
+
+    #navPanel .mobile-submenu-toggle:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    #navPanel .mobile-submenu {
+        padding: 0;
+        background: rgba(0, 0, 0, 0.12);
+    }
+
+    /* -------------------------------------------
+       Open menu state
+    -------------------------------------------- */
+
+    body.navPanel-visible #navPanel {
+        transform: translateX(0);
+    }
+
+    body.navPanel-visible #page-wrapper,
+    body.navPanel-visible #titleBar {
+        transform: translateX(275px);
+    }
+}
 /* #endregion responsive */
 
