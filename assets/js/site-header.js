@@ -237,20 +237,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Home logo on the right side of the mobile title bar.
             const homeLink = document.createElement("a");
 
-            homeLink.className = "mobile-home";
-            homeLink.href = resolveSitePath("index.html");
-            homeLink.setAttribute("aria-label", "Home");
-
-            const homeImage = document.createElement("img");
-
-            homeImage.src = resolveSitePath(
-                "images/Logo_THC/Logo_Navigation.svg"
-            );
-            homeImage.alt = "Home";
-
-            homeLink.appendChild(homeImage);
-            titleBar.appendChild(homeLink);
-
             document.body.appendChild(panel);
             document.body.appendChild(titleBar);
 
