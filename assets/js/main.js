@@ -52,5 +52,4 @@
 
 		document.addEventListener('siteHeaderLoaded', initializeDropdowns);
 
-
 })(jQuery);
