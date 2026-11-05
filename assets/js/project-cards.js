@@ -7,6 +7,7 @@ const projects = {
         description: "A music video exploring movement, colour and sound.",
         date: "September 2024",
         image: "images/Dreamweaver/Dreamweaver.png",
+        buttonText: "View",
         link: "dreamweaver.html",
 		accentColor: "#5f04ac",
     },
@@ -17,6 +18,7 @@ const projects = {
         date: "March 2024",
         image: "images/MBWI/Motion_Graphics_Graz.mp4",
 		alt: "Project MBWI",
+        buttonText: "View",
         link: "MBWI.html",
 		accentColor: "rgb(155, 195, 55)",
     },
@@ -27,7 +29,8 @@ const projects = {
         date: "Summer 2025",
         image: "images/Free/Free_Video.mov",
 		alt: "Masters Project: Free",
-        link: "free.html",
+        buttonText: "View",
+        link: "../project/free.html",
 		accentColor: "#9466a8",
     },
 
@@ -37,6 +40,7 @@ const projects = {
         date: "Late 2024",
         image: "images/Snare/Foot.mp4",
 		alt: "Snare: Warhammer Fan Animation",
+        buttonText: "View",
         link: "snare.html",
 		accentColor: "#d02681",
     },
@@ -47,6 +51,7 @@ const projects = {
         date: "Summer 2026",
         image: "images/Attribute_Manager/Attribute_Manager.png",
 		alt: "Attribute Manager",
+        buttonText: "View",
         link: "attribute_manager.html",
 		accentColor: "#5d7ce1",
     },
@@ -59,6 +64,7 @@ const projects = {
         image: "images/RTR/Morgan_car.png",
 		alt: "Realtime Roads by Morgan Skillicorn",
         link: "https://www.youtube.com/watch?v=BWxVeWIF-lQ",
+        buttonText: "View",
 		accentColor: "#3a186f",
     },
     
@@ -71,6 +77,7 @@ const projects = {
         image: "images/Maja/Maja.png",
 		alt: "The Essence - Music Video",
         link: "https://www.youtube.com/watch?v=UuvOBrjxg_0",
+        buttonText: "View",
 		accentColor: "#e5183f",
     },
 
@@ -81,8 +88,10 @@ const projects = {
         image: "images/Dave_Mudie/Shortfilm_Mudie.png",
 		alt: "Attribute Manager",
         link: "attribute_manager.html",
+        buttonText: "Coming Soon",
 		accentColor: "#b85c38",
         },
+        
 };
 
 	 
@@ -140,8 +149,8 @@ media.className = "project-feature-image";
     const button = document.createElement("a");
     button.className = "project-feature-button";
     button.href = project.link;
-    button.textContent = "View";
-    button.setAttribute("aria-label", `View ${project.title}`);
+    button.textContent = project.buttonText || "View";
+    button.setAttribute("aria-label", `${button.textContent}: ${project.title}`);
 
     content.append(title, description, date);
     footer.append(button);
