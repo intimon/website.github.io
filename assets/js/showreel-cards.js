@@ -56,6 +56,12 @@
             videoId: "QHq1xXLYDUY",
             accentColor: "var(--color-blue)"
         },
+        
+        "Free": {
+            title: "Free",
+            videoId: "tUCvpLvUoGc",
+            accentColor: "var(--color-blue)"
+        },
     };
 
     function createShowreelCard(showreel) {

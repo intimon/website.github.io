@@ -1,10 +1,13 @@
+const SITE_SCRIPT_URL = document.currentScript.src;
+
 document.addEventListener("DOMContentLoaded", async function () {
 
     // -----------------------------------------------
     // Site configuration
     // -----------------------------------------------
 
-    const SITE_BASE = new URL("./", window.location.href);
+    const SITE_BASE = new URL("../../", SITE_SCRIPT_URL);
+    //const SITE_BASE = new URL("/website.github.io/", window.location.origin);
 
     function resolveSitePath(path) {
         if (!path) return "";
