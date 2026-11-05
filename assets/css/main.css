@@ -3557,6 +3557,8 @@ input, select, textarea {
     display: none;
 }
 
+
+
 /* ----------------------------------------
    XLarge: Up to 1680px
 ---------------------------------------- */
@@ -3567,6 +3569,11 @@ input, select, textarea {
     select {
         font-size: 12pt;
     }
+	
+	/* Hide mobile logo by default (desktop) */
+		#mobile-home-logo {
+			display: none;
+		}
 }
 
 
@@ -3631,6 +3638,11 @@ input, select, textarea {
         padding-top: 4em;
         margin-top: 4em;
     }
+	
+			/* Hide mobile logo by default (desktop) */
+		#mobile-home-logo {
+			display: none;
+		}
 	
 }
 
@@ -3715,9 +3727,6 @@ input, select, textarea {
 		---------------------------------------- */
 		
 		/* Mobile and tablet home logo */
-			#mobile-home-logo {
-				display: none;
-			}
 		
 			@media screen and (max-width: 980px) {
 				
