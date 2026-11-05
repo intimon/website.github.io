@@ -3801,8 +3801,6 @@ input, select, textarea {
 		/* Make the logo inside the open navigation smaller */
 		#navPanel .mobile-panel-logo img {
 			max-height: 3em;
-			margin-left: auto;
-			margin-right: 0;
 		}
 		
 		#navPanel .mobile-panel-logo {
@@ -3956,10 +3954,17 @@ input, select, textarea {
 			/* Add tree-style corners before nested navigation items */
 			#navPanel .mobile-nav-item.depth-2 .mobile-nav-link::before,
 			#navPanel .mobile-nav-item.depth-2 .mobile-nav-label::before {
-				content: "🡪";
-				display: inline-block;
-				margin-right: 0.5em;
 				color: rgba(255, 255, 255, 0.65);
+				content: "";
+				display: inline-block;
+				width: 7px;
+				height: 7px;
+				margin-right: 0.7em;
+				border-top: 2px solid rgba(255, 255, 255, 0.65);
+				border-right: 2px solid rgba(255, 255, 255, 0.65);
+				transform: rotate(45deg);
+				vertical-align: 2px;
+}
 			}
 		
 			#navPanel .mobile-nav-item.depth-1 .mobile-nav-link,
