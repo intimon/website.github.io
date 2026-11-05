@@ -12,7 +12,7 @@
 						<nav id="nav">
 							<ul>
 								<!-- Home -->
-								<li data-mobile="Show" class="nav-logo">
+								<li class="nav-logo">
 									<a href="index.html">
 										<img src="images/Logo_THC/Logo_Navigation.svg" alt="Home">
 									</a>
@@ -21,27 +21,27 @@
 								<!-- Art Design -->
 								<li data-mobile="show"><a href="#">Art &amp; Design</a>
 									<ul>
-										<li><a href="#">CGI</a>
+										<li data-mobile="show"><a href="#">CGI</a>
 											<ul>
-												<li><a href="#">Technical Art</a></li>
+												<li data-mobile="hide"><a href="#">Technical Art</a></li>
 												<li data-mobile="show"><a href="animation.html">3D Animation</a></li>
-												<li><a href="#">Rigging</a></li>
+												<li data-mobile="hide"><a href="#">Rigging</a></li>
 												<li data-mobile="show"><a href="previs.html">Previsualisation</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Design</a>
+										<li data-mobile="show"><a href="#">Design</a>
 											<ul>
 												<li data-mobile="show"><a href="graphic-design.html">Graphic Design</a></li>
-												<li><a href="#">Digital Design</a></li>
-												<li><a href="#">Motion Design</a></li>
-												<li><a href="#">Photography</a></li>
+												<li data-mobile="hide"><a href="#">Digital Design</a></li>
+												<li data-mobile="hide"><a href="#">Motion Design</a></li>
+												<li data-mobile="hide"><a href="#">Photography</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Motion Design</a>
+										<li data-mobile="show"><a href="#">Motion Design</a>
 											<ul>
-												<li><a href="#">2D Animation</a></li>
+												<li data-mobile="hide"><a href="#">2D Animation</a></li>
 												<li data-mobile="show"><a href="animation.html">3D Animation</a></li>
-												<li><a href="#">Motion Graphic Design</a></li>
+												<li data-mobile="hide"><a href="#">Motion Graphic Design</a></li>
 											</ul>
 										</li>
 										
@@ -51,20 +51,20 @@
 								<!-- Tech -->
 								<li data-mobile="show"><a href="technical-art.html">Tech</a> 
 									<ul>
-										<li><a href="technical-art.html">Techart</a>
+										<li data-mobile="show"><a href="technical-art.html">Techart</a>
 											<ul>
 												<li data-mobile="show"><a href="technical-art.html">Technical Art</a></li>
-												<li><a href="#">Tools &amp; Plugins</a></li>
+												<li data-mobile="hide"><a href="#">Tools &amp; Plugins</a></li>
 												<!--<li><a href="#">Rigging</a></li>-->
 												<li data-mobile="show"><a href="motion-capture.html">Motion Capture</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Computing</a>
+										<li data-mobile="show"><a href="#">Computing</a>
 											<ul>
-												<li><a href="#">Coding</a></li>
-												<li><a href="#">Selfhosting</a></li>
-												<li><a href="#">Linuxbuilds</a></li>
-												<li><a href="technical-art.html">Tools</a></li>
+												<li data-mobile="hide"><a href="#">Coding</a></li>
+												<li data-mobile="hide"><a href="#">Selfhosting</a></li>
+												<li data-mobile="hide"><a href="#">Linuxbuilds</a></li>
+												<li data-mobile="show"><a href="technical-art.html">Tools</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -94,10 +94,10 @@
 								-->
 
 								<!-- About Me -->
-								<li><a href="CV.html">About Me</a>
+								<li data-mobile="show"><a href="CV.html">About Me</a>
 									<ul>
-										<li><a href="CV.html">CV</a></li>
-										<li><a href="#">About Me</a></li>
+										<li data-mobile="show"><a href="CV.html">CV</a></li>
+										<li data-mobile="hide"><a href="#">About Me</a></li>
 									</ul>
 								</li>
 

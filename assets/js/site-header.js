@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Site configuration
     // -----------------------------------------------
 
-    const SITE_BASE = new URL("/website.github.io/", window.location.origin);
+    const SITE_BASE = new URL("./", window.location.href);
 
     function resolveSitePath(path) {
         if (!path) return "";
@@ -146,35 +146,36 @@ document.addEventListener("DOMContentLoaded", async function () {
                     row.appendChild(mobileLabel);
                 }
 
-                // Add an independent expand/collapse button when
-                // this item has visible children.
+
+                // Create submenus for every level, but only add
+                // an arrow button to top-level navigation items.
                 if (hasVisibleChildren) {
-
-                    submenuCounter++;
-
-                    const submenuId = `mobile-submenu-${submenuCounter}`;
-
-                    const submenuToggle = document.createElement("button");
-
-                    submenuToggle.type = "button";
-                    submenuToggle.className = "mobile-submenu-toggle";
-                    submenuToggle.textContent = "+";
-                    submenuToggle.setAttribute("aria-expanded", "false");
-                    submenuToggle.setAttribute("aria-controls", submenuId);
-                    submenuToggle.setAttribute(
-                        "aria-label",
-                        `Expand ${label} submenu`
-                    );
-
-                    row.appendChild(submenuToggle);
 
                     const submenu = document.createElement("ul");
 
-                    submenu.id = submenuId;
+                    submenu.id = `mobile-submenu-${++submenuCounter}`;
                     submenu.className = "mobile-submenu";
                     submenu.hidden = true;
 
                     childItems.forEach(child => submenu.appendChild(child));
+
+                    // Only top-level items receive an expand/collapse arrow.
+                    if (depth === 0) {
+
+                        const submenuToggle = document.createElement("button");
+
+                        submenuToggle.type = "button";
+                        submenuToggle.className = "mobile-submenu-toggle";
+                        submenuToggle.innerHTML = '<span class="submenu-arrow"></span>';
+                        submenuToggle.setAttribute("aria-expanded", "false");
+                        submenuToggle.setAttribute("aria-controls", submenu.id);
+                        submenuToggle.setAttribute(
+                            "aria-label",
+                            `Expand ${label} submenu`
+                        );
+
+                        row.appendChild(submenuToggle);
+                    }
 
                     listItem.appendChild(row);
                     listItem.appendChild(submenu);
@@ -286,10 +287,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                     event.preventDefault();
 
-                    const submenuId = submenuToggle.getAttribute(
-                        "aria-controls"
-                    );
-
+                    const submenuId = submenuToggle.getAttribute("aria-controls");
                     const submenu = document.getElementById(submenuId);
 
                     if (!submenu) return;
@@ -297,14 +295,18 @@ document.addEventListener("DOMContentLoaded", async function () {
                     const isExpanded =
                         submenuToggle.getAttribute("aria-expanded") === "true";
 
+                    // Show or hide the selected top-level submenu.
                     submenu.hidden = isExpanded;
+
+                    // Also show or hide every submenu nested underneath it.
+                    submenu.querySelectorAll(".mobile-submenu").forEach(nestedSubmenu => {
+                        nestedSubmenu.hidden = isExpanded;
+                    });
 
                     submenuToggle.setAttribute(
                         "aria-expanded",
                         String(!isExpanded)
                     );
-
-                    submenuToggle.textContent = isExpanded ? "+" : "−";
 
                     const itemLabel = submenuToggle
                         .closest(".mobile-nav-row")

@@ -21,6 +21,7 @@ WEBSITE COLOUR PALETTE}
         --color-white: #ffffff;
         --color-black: #000000;
         --color-blue: rgba(70, 115, 170, 1);
+		--color-light-grey: rgb(225, 225, 230);
 
         /* Backgrounds */
         --color-bg-white: #ffffff;
@@ -98,6 +99,11 @@ WEBSITE COLOUR PALETTE}
         .default-section-inner {
             width: 90%;
         }
+		
+		.default-section-inner-border {
+			width: 90%;
+	
+    	}
     }
 
     /* Mobile screens */
@@ -105,6 +111,11 @@ WEBSITE COLOUR PALETTE}
         .default-section-inner {
             width: 94%;
         }
+		
+		.default-section-inner-border {
+        width: 95%;
+        padding: 20px;
+    }
     }
 
 
@@ -153,14 +164,14 @@ WEBSITE COLOUR PALETTE}
 
 			@media screen and (max-width: 980px) {
 				.content-section {
-					width: 88%;
+					width: 90%;
 					padding: 18px 24px 10px;
 				}
 			}
 
 			@media screen and (max-width: 600px) {
 				.content-section {
-					width: 92%;
+					width: 9%;
 					padding: 16px 18px 8px;
 					margin: 20px auto;
 				}
@@ -2867,6 +2878,7 @@ input, select, textarea {
 		.trusted-client img {
 			max-width: 210px;
 		}
+		
 	}
 
 	/* Mobile */
@@ -2876,7 +2888,7 @@ input, select, textarea {
 		}
 		
 		.trusted-clients-container {
-			width: calc(100% - 40px);
+			width: calc(100% - 87px);
 		}
 		
 		.trusted-clients-heading {
@@ -2891,12 +2903,12 @@ input, select, textarea {
 		}
 		
 		.trusted-client {
-			height: 80px;
+			height: 44px;
 		}
 		
 		.trusted-client img {
 			max-width: 155px;
-			height: 70px;
+			height: 44px;
 		}
 	}
 
@@ -3173,7 +3185,7 @@ input, select, textarea {
 	/* Individual project cards */
 	.project-feature-card {
 		position: relative;
-		min-width: 0;
+		min-width: 100px;
 		height: 100%;
 
 		display: flex;
@@ -3301,8 +3313,7 @@ input, select, textarea {
 		.project-feature-grid-3 {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 24px;
-			padding: 12px 14px;
-			max-width: 540px;
+			padding: 12px 0px;
 		}
 
 		.project-feature-title {
@@ -3473,7 +3484,7 @@ input, select, textarea {
         width: 88%;
         padding: 60px 0 40px;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex;
         gap: 45px;
     }
 
@@ -3484,16 +3495,16 @@ input, select, textarea {
 
     .footer-socials {
         margin-top: 26px;
-        gap: 12px;
+        gap: 14px;
     }
 
     .footer-social-link {
-        width: 42px;
-        height: 42px;
+        width: 34px;
+        height: 34px;
     }
 
     .footer-brand {
-        align-items: flex-start;
+        align-items: flex-end;
     }
 
     .footer-logo-link {
@@ -3504,6 +3515,11 @@ input, select, textarea {
     .footer-copyright {
         text-align: left;
     }
+	
+	.footer-logo-link {
+		width: 50px;
+		height: 50px;
+	}
 }
 
 /* Respect reduced-motion preferences */
@@ -3523,19 +3539,23 @@ input, select, textarea {
    RESPONSIVE SCALING
 ======================================== */
 
+
+/* Hide mobile navigation by default (desktop) */
+
+#navPanel, #titleBar {
+    display: none;
+}
+
 /* ----------------------------------------
    XLarge: Up to 1680px
 ---------------------------------------- */
-
 @media screen and (max-width: 1680px) {
-
     body,
     input,
     textarea,
     select {
         font-size: 12pt;
     }
-
 }
 
 
@@ -3544,9 +3564,8 @@ input, select, textarea {
 ---------------------------------------- */
 
 @media screen and (max-width: 1280px) {
-
+	
     /* Basic */
-
     body,
     input,
     select,
@@ -3555,300 +3574,452 @@ input, select, textarea {
         line-height: 0.5em;
         letter-spacing: 0;
     }
-
+	
     /* Wrapper */
-
     .wrapper {
         padding: 4em 0 7em 0;
     }
-
+	
     /* Logo */
-
     #logo {
         margin-top: -0.5em !important;
     }
-
+	
     #logo h1 {
         font-size: 1.75em;
     }
-
+	
     /* Intro */
-
     #intro {
         padding-bottom: 7em;
     }
-
+	
     #intro p.style1 {
         font-size: 1.25em;
     }
-
+	
     #intro p.style2 {
         font-size: 2.25em;
     }
-
+	
     /* Footer */
-
     #footer {
         padding-bottom: 4em;
     }
-
+	
+	
     #footer header.style1 {
         padding-bottom: 4em;
         margin-bottom: 4em;
         border-bottom: solid 1px rgba(255, 255, 255, 0.05);
     }
-
+	
+	
     /* Copyright */
-
     #copyright {
         padding-top: 4em;
         margin-top: 4em;
     }
-
-}
-
-
-/* ========================================
-   TABLET AND MOBILE
-   Up to 980px
-======================================== */
-
-/* Hide mobile navigation by default (desktop) */
-
-#navPanel,
-#titleBar {
-    display: none;
-}
-
-
-@media screen and (max-width: 980px) {
-
-    /* Section / Article */
-
-    header br {
-        display: none;
-    }
-
-    /* Form */
-
-    form ul.actions {
-        text-align: center;
-    }
-
-    /* Feature List */
-
-    .feature-list {
-        max-width: 40em;
-    }
-
-    .feature-list section {
-        padding-top: 4em;
-    }
-
-    .feature-list > .row > :first-child > section {
-        border-top: 0;
-        padding-top: 0;
-    }
-
-    /* Desktop Navigation */
-
-    #nav {
-        display: none;
-    }
-
-    /* Intro */
-
-    #intro p.style3 {
-        width: auto;
-    }
-
-    /* Highlights */
-
-    #highlights .highlight {
-        max-width: 40em;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* Footer */
-
-    #footer .feature-list {
-        border-top: solid 1px rgba(255, 255, 255, 0.05);
-        padding-top: 4em;
-    }
-
-
-    /* ----------------------------------------
-       Page Wrapper Transition
-    ---------------------------------------- */
-
-    #page-wrapper {
-        -moz-backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
-        backface-visibility: hidden;
-
-        -moz-transition: -moz-transform 0.5s ease;
-        -webkit-transition: -webkit-transform 0.5s ease;
-        -ms-transition: -ms-transform 0.5s ease;
-        transition: transform 0.5s ease;
-
-        padding-bottom: 1px;
-    }
-
-
-    /* ----------------------------------------
-       Mobile Navigation Button Bar
-    ---------------------------------------- */
-
-    #titleBar {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3.5em;
-    z-index: 10003;
-    pointer-events: auto;
-    transition: transform 0.5s ease;
-	}
-
-    #titleBar .toggle {
-    display: block;
-    pointer-events: auto;
-
-    position: absolute;
-    top: 0.5em;
-    left: 0.75em;
-
-    width: 2.5em;
-    min-width: 2.5em;
-    height: 2.5em;
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-    border-radius: 0.3em;
-
-    background: #242730;
-    color: #fff;
-
-    cursor: pointer;
-    font-size: 1.2em;
-    z-index: 10004;
-}
 	
-    #titleBar .toggle::before {
-        content: "\2630";
-        display: block;
-    }
-
-	#titleBar .toggle::before { content: none !important; }
-
-    /* ----------------------------------------
-       Mobile Navigation Panel
-    ---------------------------------------- */
-
-    #navPanel {
-        display: block;
-        box-sizing: border-box;
-
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 275px;
-        height: 100%;
-
-        overflow-y: auto;
-        padding: 3.5em 0 1em;
-
-        background: #242730 url("images/overlay.png");
-        box-shadow: inset -3px 0 4px rgba(0, 0, 0, 0.1);
-
-        z-index: 10002;
-
-        transform: translateX(-275px);
-        transition: transform 0.5s ease;
-    }
-
-    #navPanel .link {
-        display: block;
-        box-sizing: border-box;
-
-        min-height: 44px;
-        line-height: 44px;
-        margin: 0 15px;
-
-        color: rgba(255, 255, 255, 0.65);
-
-        font-size: 0.85em;
-        letter-spacing: 0.1em;
-        text-decoration: none;
-        text-transform: uppercase;
-
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    #navPanel .link.depth-0 {
-        color: #fff;
-        font-weight: 700;
-    }
-
-    #navPanel .link:hover {
-        color: #fff;
-    }
+}
 
 
-    /* ----------------------------------------
-       Open Navigation
-    ---------------------------------------- */
+	/* ========================================
+	   TABLET AND MOBILE
+	   Up to 980px
+	======================================== */
+	
+	
+	@media screen and (max-width: 980px) {
+		/* Section / Article */
+		header br {
+			display: none;
+		}
+		
+		/* Form */
+		form ul.actions {
+			text-align: center;
+		}
+		
+		/* Feature List */
+		.feature-list {
+			max-width: 40em;
+		}
+		
+		.feature-list section {
+			padding-top: 4em;
+		}
+		
+		.feature-list > .row > :first-child > section {
+			border-top: 0;
+			padding-top: 0;
+		}
+		
+		/* Desktop Navigation */
+		#nav {
+			display: none;
+		}
+		
+		/* Intro */
+		#intro p.style3 {
+			width: auto;
+		}
+		
+		
+		/* Highlights */
+		#highlights .highlight {
+			max-width: 40em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		/* Footer */
+		#footer .feature-list {
+			border-top: solid 1px rgba(255, 255, 255, 0.05);
+			padding-top: 4em;
+		}
+		
+		
+			/* ----------------------------------------
+			   Page Wrapper Transition
+			--------------------------------------- */
+		
+				#page-wrapper {
+					-moz-backface-visibility: hidden;
+					-webkit-backface-visibility: hidden;
+					-ms-backface-visibility: hidden;
+					backface-visibility: hidden;
+					
+					-moz-transition: -moz-transform 0.5s ease;
+					-webkit-transition: -webkit-transform 0.5s ease;
+					-ms-transition: -ms-transform 0.5s ease;
+					transition: transform 0.5s ease;
+					
+					padding-bottom: 1px;
+				}
+		
+		
+		/* ----------------------------------------
+		   Mobile Navigation Button Bar
+		---------------------------------------- */
+		
+			#titleBar {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 3.5em;
+			z-index: 10003;
+			pointer-events: auto;
+			transition: transform 0.5s ease;
+			}
+		
+		
+			#titleBar .toggle {
+			display: block;
+			pointer-events: auto;
+			position: absolute;
+			top: 0.5em;
+			left: auto !important;
+			right: 0.75em !important;
+			width: 2.5em;
+			min-width: 2.5em;
+			height: 2.5em;
+			margin: 0;
+			padding: 0;
+			border: 1px solid var(--color-white);
+			border-radius: 0.3em;
+			background: #242730;
+			color: #fff;
+			cursor: pointer;
+			font-size: 1.2em;
+			z-index: 10004;
+		}
 
-    body.navPanel-visible #navPanel {
-        transform: translateX(0);
-    }
+			#titleBar .toggle::before {
+				content: "";
+				display: block;
+				width: 19px;
+				height: 17px;
+				margin: auto;
+				background:
+					linear-gradient(currentColor, currentColor) top / 100% 2px no-repeat,
+					linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat,
+					linear-gradient(currentColor, currentColor) bottom / 100% 2px no-repeat;
+			}
+		
+		/* ----------------------------------------
+		   Mobile Navigation Panel
+		---------------------------------------- */
 
-    body.navPanel-visible #page-wrapper,
-    body.navPanel-visible #titleBar {
-        transform: translateX(275px);
-    }
+		/*Styling*/
+		/* Main navigation level */
+		/* Remove underlines from all navigation links */		
+		#navPanel a,
+		#navPanel a:hover,
+		#navPanel a:focus {
+			text-decoration: none;
+		}
+		
+		#navPanel .mobile-nav-item.depth-0 > .mobile-nav-row {
+			font-size: 1.4em;
+			font-weight: 700;
+			color: var(--color-white);
+			min-height: 52px;
+			box-sizing: border-box;
+			align-items: center;
+			}
 
+		#navPanel .mobile-nav-item.depth-0 .mobile-nav-link,
+		#navPanel .mobile-nav-item.depth-0 .mobile-nav-label {
+			color: var(--color-white);
+		}
+		
+		/* Main navigation hover colour */
+		#navPanel .mobile-nav-item.depth-0 .mobile-nav-link:hover {
+			color: var(--color-blue);
+			transition: color 0.2s ease;
+		}
+		
+		/* Make submenu arrows white */
+		#navPanel .mobile-submenu-toggle {
+			color: #fff;
+		}
+
+		/* Make the logo inside the open navigation smaller */
+		#navPanel .mobile-panel-logo img {
+			max-height: 3em;
+			margin-left: auto;
+			margin-right: 0;
+		}
+		
+		#navPanel .mobile-panel-logo {
+			display: flex;
+			width: 100%;
+			justify-content: flex-end;
+			box-sizing: border-box;
+			padding: 0em 1.5em;
+			margin-bottom: 1.5em;
+		}
+		
+		
+		#navPanel {
+			box-sizing: border-box;
+			display: block;
+			position: fixed;
+			top: 0;
+			left: auto;
+			right: 0;
+			width: 275px;
+			height: 100%;
+			overflow-y: auto;
+			padding: 3.5em 0 1em;
+			background: #242730 url("images/overlay.png");
+			box-shadow: inset -3px 0 4px rgba(0, 0, 0, 0.1);
+			z-index: 10002;
+			transform: translateX(100%);
+			transition: transform 0.5s ease;
+		}
+		
+		#navPanel .link {
+			display: block;
+			box-sizing: border-box;
+			min-height: 44px;
+			line-height: 44px;
+			margin: 0 15px;
+			color: rgba(255, 255, 255, 0.65);
+			font-size: 0.85em;
+			letter-spacing: 0.1em;
+			text-decoration: none;
+			text-transform: uppercase;
+			border-top: 1px solid rgba(255, 255, 255, 0.08);
+		}
+		
+		#navPanel .link:hover {
+			color: #fff;
+		}
+		
+		#navPanel .link.depth-0 {
+			color: #fff;
+			font-weight: 700;
+		}
+		
+		#navPanel .mobile-nav-link {
+			padding-left: 1em;
+			padding-right: 1.5em;
+		}
+		
+		/* Submenu arrow button */
+			#navPanel .mobile-submenu-toggle {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 36px;
+				height: 36px;
+				min-width: 36px;
+				padding: 0;
+				margin-left: auto;
+				background: transparent;
+				border: 1px solid rgba(255,255,255,0.3);
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			/* Chevron shape */
+			#navPanel .submenu-arrow {
+				width: 8px;
+				height: 8px;
+				border-right: 2px solid currentColor;
+				border-bottom: 2px solid currentColor;
+				transform: rotate(45deg);
+				transition: transform 0.2s ease;
+			}
+
+			/* Rotate arrow when submenu is open */
+			#navPanel .mobile-submenu-toggle[aria-expanded="true"] .submenu-arrow {
+				transform: rotate(225deg);
+			}
+		
+			#navPanel .mobile-nav-row {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				width: 100%;
+				box-sizing: border-box;
+			}
+
+			#navPanel .mobile-nav-link,
+			#navPanel .mobile-nav-label {
+				flex: 1;
+				min-width: 0;
+			}
+
+			#navPanel .mobile-submenu-toggle {
+				flex: 0 0 36px;
+				margin-left: auto;
+				margin-right: 1em;
+			}
+		
+			/* Separators between main navigation items */
+			#navPanel .mobile-nav-item.depth-0 {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+				padding-bottom: 0.4em;
+				margin-bottom: 0.4em;
+			}
+		
+			/* Reset default list indentation */
+			#navPanel .mobile-nav-list,
+			#navPanel .mobile-submenu {
+				margin-left: 0;
+				padding-left: 0;
+				list-style: none;
+			}
+		
+			/* Consistent hierarchy indentation */
+			#navPanel .mobile-nav-item.depth-0 > .mobile-nav-row {
+				padding-left: 1em;
+			}
+
+			#navPanel .mobile-nav-item.depth-1 > .mobile-nav-row {
+				padding-left: 2em;
+				font-size: 1.2em;
+				font-weight: 600;
+				color: var(--color-light-grey);
+			}
+
+			#navPanel .mobile-nav-item.depth-2 > .mobile-nav-row {
+				padding-left: 3em;
+				font-size: 1em;
+				font-weight: 400;
+				color: var(--color-light-grey);
+				min-height: 30px;
+				padding-top: 0.1em;
+				padding-bottom: 0.1em;
+			}
+
+			#navPanel .mobile-nav-item.depth-3 > .mobile-nav-row {
+				padding-left: 4em;
+			}
+		
+			/* Add tree-style corners before nested navigation items */
+			#navPanel .mobile-nav-item.depth-2 .mobile-nav-link::before,
+			#navPanel .mobile-nav-item.depth-2 .mobile-nav-label::before {
+				content: "🡪";
+				display: inline-block;
+				margin-right: 0.5em;
+				color: rgba(255, 255, 255, 0.65);
+			}
+		
+			#navPanel .mobile-nav-item.depth-1 .mobile-nav-link,
+			#navPanel .mobile-nav-item.depth-1 .mobile-nav-label {
+				color: rgba(255, 255, 255, 0.80);
+			}
+		
+			#navPanel .mobile-nav-item.depth-2 .mobile-nav-link,
+			#navPanel .mobile-nav-item.depth-2 .mobile-nav-label {
+				color: rgba(255, 255, 255, 0.65);
+			}
+
+		/* ----------------------------------------
+		   Open Navigation
+		---------------------------------------- */
+		
+		/*This moves the navigation into the screen*/
+		body.navPanel-visible #navPanel {
+			transform: translateX(0);
+		}
+		
+		/*This moves the whole page to the side so that the navigation can be shown*/
+		body.navPanel-visible #page-wrapper,
+		body.navPanel-visible #titleBar {
+		transform: translateX(-275px);
+		}
+		
+		
+	}
+/* ----------------------------------------
+ End of the section for :980px */
+
+
+
+#navPanel .mobile-nav-link {
+    padding-left: 0;
+    padding-right: 1.5em;
 }
 
 
 /* ----------------------------------------
    Tablet-Specific: 737px–980px
----------------------------------------- */
+	---------------------------------------- */
+	
+	/* Mobile navigation home logo */
 
-/* Mobile navigation home logo */
+	@media screen and (max-width: 980px) {
+			
+		#titleBar .mobile-home {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2.5em;
+			height: 2.5em;
+			pointer-events: auto;
+		}
+		#titleBar .mobile-home img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+			
+	}
 
-@media screen and (max-width: 980px) {
-
-    #titleBar .mobile-home {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5em;
-        height: 2.5em;
-        pointer-events: auto;
-    }
-
-    #titleBar .mobile-home img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-}
-
-@media screen and (max-width: 980px) and (min-width: 737px) {
-
-    #footer .feature-list > .row > :nth-child(2) > section {
-        border-top: 0;
-        padding-top: 0;
-    }
-
+	@media screen and (max-width: 980px) and (min-width: 737px) {
+		
+		#footer .feature-list > .row > :nth-child(2) > section {
+			border-top: 0;
+			padding-top: 0;
+		} 
 }
 
 
