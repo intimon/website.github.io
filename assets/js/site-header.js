@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const SITE_BASE = new URL("../../", SITE_SCRIPT_URL);
     //const SITE_BASE = new URL("/website.github.io/", window.location.origin);
-    document.querySelectorAll("#mobile-navigation-logo").forEach(logo => {
-    logo.src = new URL("images/Logo_THC/Logo_Navigation.svg", SITE_BASE).href;
-});
+    document.querySelectorAll(".site-logo").forEach(logo => {
+        logo.src = new URL("images/Logo_THC/Logo_Navigation.svg", SITE_BASE).href;
+    });
 
     function resolveSitePath(path) {
         if (!path) return "";
