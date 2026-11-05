@@ -2622,6 +2622,7 @@ input, select, textarea {
     margin: 0;
 
     list-style: none;
+	box-shadow: 0 0px 21px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -2688,6 +2689,15 @@ input, select, textarea {
     color: #000;
 }
 
+#nav .nav-logo img {
+	transition: transform 0.25s ease, filter 0.25s ease;
+
+}
+
+#nav .nav-logo img:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.2));
+}
 
 /* =========================================================
    LOGO
