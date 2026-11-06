@@ -30,7 +30,7 @@ const projects = {
         image: "images/Free/Free_Video.mov",
 		alt: "Masters Project: Free",
         buttonText: "View",
-        link: "../project/free.html",
+        link: "project/free.html",
 		accentColor: "#9466a8",
     },
 

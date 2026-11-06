@@ -1,38 +1,11 @@
-const SITE_SCRIPT_URL = document.currentScript.src;
-
 document.addEventListener("DOMContentLoaded", async function () {
 
     // -----------------------------------------------
-    // Site configuration
+    // Shared site configuration
     // -----------------------------------------------
 
-    const SITE_BASE = new URL("../../", SITE_SCRIPT_URL);
-    //const SITE_BASE = new URL("/website.github.io/", window.location.origin);
-    document.querySelectorAll(".site-logo").forEach(logo => {
-        logo.src = new URL("images/Logo_THC/Logo_Navigation.svg", SITE_BASE).href;
-    });
-
-    function resolveSitePath(path) {
-        if (!path) return "";
-
-        if (
-            /^(https?:)?\/\//i.test(path) ||
-            /^(data:|blob:|mailto:|tel:|#)/i.test(path)
-        ) {
-            return path;
-        }
-
-        if (path.startsWith(SITE_BASE.pathname)) {
-            return new URL(path, window.location.origin).href;
-        }
-
-        const cleanPath = path
-            .replace(/^(\.\.\/)+/, "")
-            .replace(/^(\.\/)+/, "")
-            .replace(/^\/+/, "");
-
-        return new URL(cleanPath, SITE_BASE).href;
-    }
+    const SITE_BASE = window.SITE_BASE;
+    const resolveSitePath = window.resolveSitePath;
 
     // -----------------------------------------------
     // Header container and settings
@@ -65,6 +38,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         container.innerHTML = await response.text();
+
+        container.querySelectorAll(".site-logo").forEach(logo => {
+            logo.src = resolveSitePath("images/Logo_THC/Logo_Navigation.svg");
+        });
 
         // -----------------------------------------------
         // Build mobile navigation
