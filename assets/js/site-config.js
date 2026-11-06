@@ -1,3 +1,8 @@
+// This File is setting up the filepath solution.
+// Since there are other Scripts that are called in differenent places, the links will or won't work depending on where they are.
+// This Script solves this problem by always looking from Site_Base 'Root'
+
+
 // Capture the location of this script before DOMContentLoaded.
 const CONFIG_SCRIPT_URL = document.currentScript.src;
 

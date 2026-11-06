@@ -1,15 +1,16 @@
-/**
- * Collapsible Section Component
- *
- * Allows sections to be expanded and collapsed by clicking
- * their associated toggle button.
- *
- * Required HTML:
- * - .collapsible-section
- * - .collapsible-toggle
- * - .collapsible-content
+/*
+     Collapsible Section Component
+     
+     Allows sections to be expanded and collapsed by clicking
+     their associated toggle button.
+     
+     Required HTML:
+     - .collapsible-section
+     - .collapsible-toggle
+     - .collapsible-content
  */
 
+// Function for Collapsible Content
 (function () {
     "use strict";
 
@@ -80,7 +81,8 @@
             });
 
         });
-    }
+    }// End 
+
 
     // Initialise when the document is ready.
     if (document.readyState === "loading") {
@@ -90,6 +92,8 @@
         );
     } else {
         initialiseCollapsibleSections();
-    }
+    }// End
 
-})();
+})(); // End of function
+    
+}

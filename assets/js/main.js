@@ -1,20 +1,18 @@
 /*
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	This is the Main Java Script File! This Defines some general logic
 */
 
 (function($) {
-
+	
 	var	$window = $(window),
 		$body = $('body');
 
-	// Breakpoints.
+	// Breakpoints of website for different sizes
 		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ null,      '736px'  ]
+			xlarge:  [ '1281px',  '1680px' ], 	//Large Screens, Monitors, etc.
+			large:   [ '981px',   '1280px' ],	//Usually lare Laptops, large Tablets.
+			medium:  [ '737px',   '980px'  ],	// Normal tablets and large Phones/Foldables maybe.
+			small:   [ null,      '736px'  ]	// Phones and anything smaller than that
 		});
 
 	// Play initial animations on page load.
@@ -24,7 +22,7 @@
 			}, 100);
 		});
 
-	// Dropdowns.
+	// Dropdown Logic for the Navigation
 		function initializeDropdowns() {
 			const nav = document.querySelector('#nav > ul');
 
