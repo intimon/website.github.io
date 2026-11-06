@@ -213,6 +213,14 @@ box-sizing: border-box;
 
 }
 
+@media screen and (max-width: 736px) {
+
+    .content-grid-full {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 /* Individual content boxes */
 .content-grid .content-section {
 width: 100%;
