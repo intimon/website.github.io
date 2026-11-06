@@ -3578,6 +3578,11 @@ input, select, textarea {
     display: none;
 }
 
+/* Hide mobile logo by default (desktop) */
+		#mobile-home-logo {
+			display: none;
+		}
+
 
 
 /* ----------------------------------------
@@ -3590,11 +3595,6 @@ input, select, textarea {
     select {
         font-size: 12pt;
     }
-	
-	/* Hide mobile logo by default (desktop) */
-		#mobile-home-logo {
-			display: none;
-		}
 }
 
 

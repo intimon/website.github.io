@@ -33,7 +33,7 @@
                 image: "images/Free/Free_Video.mov",
                 alt: "Masters Project: Free",
                 buttonText: "View",
-                link: "/project/free.html",
+                link: "projects/free.html",
                 accentColor: "#9466a8",
             },
 
