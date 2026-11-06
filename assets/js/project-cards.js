@@ -71,8 +71,6 @@
                 accentColor: "#3a186f",
             },
 
-
-
             "Maja": {
                 title: "The Essence - Music Video",
                 description: "by Maja Oszczypała",
