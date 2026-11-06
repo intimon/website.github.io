@@ -120,15 +120,26 @@
         return card;
     }
 
-    //Search and fill in Showreels when called in HTML File
-    document.addEventListener("DOMContentLoaded", function () {
+    // Search and fill in Showreels when called in HTML File
+    function loadShowreelCards() {
+
         document.querySelectorAll("[data-showreel-card]").forEach(container => {
+
             const showreel = showreels[container.dataset.showreelCard];
 
             if (showreel) {
                 container.replaceChildren(createShowreelCard(showreel));
             }
+
         });
-    });
+
+    }
+
+    // Run when the DOM is ready, or immediately if it already is.
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadShowreelCards);
+    } else {
+        loadShowreelCards();
+    }
 
 })();

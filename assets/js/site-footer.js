@@ -3,7 +3,7 @@
 // For the .html section look in components/footer.html
 // The dynamic link solution is in assets/js/site-config.js
 
-document.addEventListener("DOMContentLoaded", async function () {
+async function loadSiteFooter() {
     
     //Dynamic Path solution
     const resolveSitePath = window.resolveSitePath;
@@ -27,4 +27,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Footer loading failed:", error);
     }
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadSiteFooter);
+} else {
+    loadSiteFooter();
+}

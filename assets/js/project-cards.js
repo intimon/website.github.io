@@ -111,7 +111,7 @@
         );
 
         // Video or Image Selection Logic
-            const mediaPath = project.image;
+            const mediaPath = resolveSitePath(project.image);
             const isVideo = /\.(mp4|webm|mov)(?:$|[?#])/i.test(mediaPath);
 
             let media;
@@ -159,7 +159,7 @@
         // Button
         const button = document.createElement("a");
         button.className = "project-feature-button";
-        button.href = project.link;
+        button.href = resolveSitePath(project.link);
         button.textContent = project.buttonText || "View";
         button.setAttribute("aria-label", `${button.textContent}: ${project.title}`);
         
@@ -172,16 +172,26 @@
         return card;
 }
      
-    // Find and Place called Project 
-    document.addEventListener("DOMContentLoaded", function () {
+    // Find and place called Projects
+    function loadProjectCards() {
+
         document.querySelectorAll("[data-project-card]").forEach(container => {
+
             const project = projects[container.dataset.projectCard];
 
             if (project) {
                 container.replaceChildren(createProjectCard(project));
             }
-    });
-        
-}); // End of Funciton
 
-})(jQuery);
+        });
+
+    }
+
+    // Run when the DOM is ready, or immediately if it already is.
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadProjectCards);
+    } else {
+        loadProjectCards();
+    }
+
+    })(jQuery);

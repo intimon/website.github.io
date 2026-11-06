@@ -1,50 +1,63 @@
 // -----------------------------------------------
+// Website Script Loader
 /*
-Website Script Loader
-
-This is set up to bring all the Scripts in one place and when ever there is a update, 
-something added or removed, it's done on all the pages automatically. This removes the 
-time to update things and there are less likely mistakes because one page was forgotten to be updated.
+This is set up to bring all the scripts into one
+place. Updates, additions and removals can be
+managed here and applied across all pages.
 */
+// -----------------------------------------------
 
+(function () {
 
-// Get the location of this script.
-const loaderURL = document.currentScript.src;
+    // Capture the loader's location.
+    const loaderURL = document.currentScript.src;
 
-// Establish the website root.
-const SITE_BASE = new URL("../../", loaderURL);
+    // Establish the website root.
+    const SITE_BASE = new URL("../../", loaderURL);
 
-// Scripts loaded in order.
-const scripts = [
-    "assets/js/jquery.min.js",
-    "assets/js/jquery.dropotron.min.js",
-    "assets/js/browser.min.js",
-    "assets/js/breakpoints.min.js",
-    "assets/js/util.js",
-    "assets/js/main.js",
-    "assets/js/project-cards.js",
-    "assets/js/showreel-cards.js",
-    "assets/js/site-config.js",
-    "assets/js/site-header.js",
-    "assets/js/site-footer.js"
-];
+    // Scripts to load in order.
+    const scripts = [
+        "assets/js/jquery.min.js",
+        "assets/js/jquery.dropotron.min.js",
+        "assets/js/browser.min.js",
+        "assets/js/breakpoints.min.js",
+        "assets/js/util.js",
+        "assets/js/main.js",
+        "assets/js/site-config.js",
+        "assets/js/project-cards.js",
+        "assets/js/showreel-cards.js",
+        "assets/js/site-header.js",
+        "assets/js/site-footer.js",
+        "assets/js/collapsible-section.js"
+    ];
 
-// Load the scripts in their original order.
-scripts.forEach(path => {
-    const script = document.createElement("script");
-    script.src = new URL(path, SITE_BASE).href;
-    script.async = false;
-    document.write(
-        `<script src="${script.src}"><\/script>`
-    );
-});
+    // Load scripts sequentially.
+    async function loadScripts() {
 
-// Load collapsible sections with defer.
-const collapsibleScript = new URL(
-    "assets/js/collapsible-section.js",
-    SITE_BASE
-).href;
+        for (const path of scripts) {
 
-document.write(
-    `<script defer src="${collapsibleScript}"><\/script>`
-);
+            const script = document.createElement("script");
+
+            script.src = new URL(path, SITE_BASE).href;
+
+            await new Promise((resolve, reject) => {
+
+                script.onload = resolve;
+
+                script.onerror = () => reject(
+                    new Error(`Failed to load: ${path}`)
+                );
+
+                document.body.appendChild(script);
+
+            });
+
+        }
+
+    }
+
+    loadScripts().catch(error => {
+        console.error("Website script loader failed:", error);
+    });
+
+})();

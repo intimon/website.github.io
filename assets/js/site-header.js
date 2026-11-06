@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function () {
+async function loadSiteHeader() {
 
     // -----------------------------------------------
     // Shared site configuration
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         container.querySelectorAll(".site-logo").forEach(logo => {
             logo.src = resolveSitePath("images/Logo_THC/Logo_Navigation.svg");
+            
         });
 
         // -----------------------------------------------
@@ -347,6 +348,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 if (poster) {
                     bannerElement.style.backgroundImage = `url("${poster}")`;
+                    bannerElement.style.backgroundSize = "cover";
+                    bannerElement.style.backgroundPosition = "center";
+                    bannerElement.style.backgroundRepeat = "no-repeat";
                 }
 
                 const video = document.createElement("video");
@@ -416,4 +420,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Header loading failed:", error);
     }
 
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadSiteHeader);
+} else {
+    loadSiteHeader();
+}
