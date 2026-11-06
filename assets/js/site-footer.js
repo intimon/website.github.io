@@ -4,16 +4,14 @@
 // The dynamic link solution is in assets/js/site-config.js
 
 async function loadSiteFooter() {
-    
-    //Dynamic Path solution
+
     const resolveSitePath = window.resolveSitePath;
     const container = document.querySelector("#site-footer");
 
-    //Footer Logic
     if (!container) return;
 
-    //if container is in the site, load the footer in.
     try {
+
         const footerURL = resolveSitePath("components/footer.html");
         const response = await fetch(footerURL);
 
@@ -22,9 +20,19 @@ async function loadSiteFooter() {
         }
 
         container.innerHTML = await response.text();
-        
-    // Debugging: Error message if issues.
+
+        // Resolve all local image paths from the website root.
+        container.querySelectorAll("img").forEach(image => {
+            image.src = resolveSitePath(image.getAttribute("src"));
+        });
+
+        // Resolve internal footer links.
+        container.querySelectorAll("a").forEach(link => {
+            link.href = resolveSitePath(link.getAttribute("href"));
+        });
+
     } catch (error) {
+
         console.error("Footer loading failed:", error);
     }
 }
