@@ -3603,6 +3603,10 @@ input, select, textarea {
     select {
         font-size: 12pt;
     }
+
+	#mobile-home-logo {
+		display: none;
+	}
 }
 
 
