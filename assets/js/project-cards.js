@@ -59,6 +59,17 @@
                 link: "attribute_manager.html",
                 accentColor: "#5d7ce1",
             },
+            
+            "Flourishing Beyond": {
+                title: "Flourishing Beyond",
+                description: "Procedural Animation Project",
+                date: "Spring 2025",
+                image: "images/Flourishing_Beyond/No_Framing.mp4",
+                alt: "Flourishing Beyond",
+                buttonText: "View",
+                link: "projects/flourishing_beyond.html",
+                accentColor: "#cd5d19",
+            },
 
             // Featured Projects
             "RTR": {

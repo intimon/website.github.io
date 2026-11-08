@@ -79,6 +79,12 @@
             videoId: "tUCvpLvUoGc",
             accentColor: "var(--color-blue)"
         },
+        "Flourishing Beyond": {
+            title: "Flourishing Beyond",
+            videoId: "anFEgksKN49oC9",
+            accentColor: "var(--color-blue)"
+        },
+
     };
 
 
