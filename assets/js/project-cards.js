@@ -45,7 +45,7 @@
                 image: "images/Snare/Foot.mp4",
                 alt: "Snare: Warhammer Fan Animation",
                 buttonText: "View",
-                link: "snare.html",
+                link: "projects/snare.html",
                 accentColor: "#d02681",
             },
 
