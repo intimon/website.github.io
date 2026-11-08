@@ -16,87 +16,64 @@ managed here and applied across all pages.
     const SITE_BASE = new URL("../../", loaderURL);
 
     // Set up the preloader on the first entry in this tab.
-    async function setupPreloader() {
+    function setupPreloader() {
 
-        if (sessionStorage.getItem("preloaderShown")) return;
+    const preloader = document.getElementById("site-preloader");
+    const video = document.getElementById("preloader-video");
 
-        sessionStorage.setItem("preloaderShown", "true");
+    if (!preloader || !video) return;
 
-        // Load the preloader stylesheet.
-        const css = document.createElement("link");
-        css.rel = "stylesheet";
-        css.href = new URL("assets/css/preloader.css", SITE_BASE).href;
+    // Only continue if this is the first entry in this tab.
+    if (!document.documentElement.classList.contains("preloader-active")) {
+        return;
+    }
 
-        document.head.appendChild(css);
+    // Resolve the video path from the website root.
+    video.src = new URL(
+        "images/Logo_THC/Logo_Roll_Animation.mp4",
+        SITE_BASE
+    ).href;
 
-        await new Promise(resolve => {
-            css.onload = resolve;
-            css.onerror = resolve;
-        });
-
-        // Load the preloader HTML.
-        const response = await fetch(
-            new URL("components/preloader.html", SITE_BASE)
-        );
-
-        if (!response.ok) {
-            throw new Error("Could not load preloader.html");
-        }
-
-        const wrapper = document.createElement("div");
-        wrapper.innerHTML = await response.text();
-
-        const preloader = wrapper.firstElementChild;
-        const video = preloader.querySelector("video");
-
-        // Resolve the video path from the website root.
-        video.querySelector("source").src =
-            new URL("images/Logo_THC/Logo_Roll_Animation.mp4", SITE_BASE).href;
-
-        video.load();
-
-        document.body.prepend(preloader);
-
-        /*
-        // Remove the preloader when the page has finished loading.
-        const hidePreloader = () => {
-            preloader.classList.add("hidden");
-
-            setTimeout(() => preloader.remove(), 600);
-        };
+    // Wait for the page to finish loading.
+    const pageLoaded = new Promise(resolve => {
 
         if (document.readyState === "complete") {
-            hidePreloader();
+            resolve();
         } else {
-            window.addEventListener("load", hidePreloader, { once: true });
+            window.addEventListener("load", resolve, { once: true });
         }
-        */
 
-        // Keep the preloader visible for at least 10 seconds.
-            const minimumDisplayTime = 5000;
-            const startTime = Date.now();
+    });
 
-            // Hide after the page has loaded AND the minimum time has passed.
-            const hidePreloader = () => {
+    // Start playback and measure the minimum display time.
+    const playbackStarted = () => {
 
-                const elapsedTime = Date.now() - startTime;
-                const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
+        const startTime = Date.now();
+
+        pageLoaded.then(() => {
+
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, 5000 - elapsed);
+
+            setTimeout(() => {
+
+                preloader.classList.add("hidden");
 
                 setTimeout(() => {
+                    preloader.remove();
+                }, 600);
 
-                    preloader.classList.add("hidden");
+            }, remaining);
 
-                    setTimeout(() => preloader.remove(), 600);
+        });
 
-                }, remainingTime);
-            };
+    };
 
-            if (document.readyState === "complete") {
-                hidePreloader();
-            } else {
-                window.addEventListener("load", hidePreloader, { once: true });
-            }
-    }
+    video.play().then(
+        playbackStarted,
+        playbackStarted
+    );
+}
 
     // Scripts to load in order.
     const scripts = [
@@ -117,7 +94,7 @@ managed here and applied across all pages.
     // Load scripts sequentially.
     async function loadScripts() {
 
-        await setupPreloader();
+        setupPreloader();
         
         for (const path of scripts) {
 
