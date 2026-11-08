@@ -57,6 +57,7 @@ managed here and applied across all pages.
 
         document.body.prepend(preloader);
 
+        /*
         // Remove the preloader when the page has finished loading.
         const hidePreloader = () => {
             preloader.classList.add("hidden");
@@ -69,6 +70,32 @@ managed here and applied across all pages.
         } else {
             window.addEventListener("load", hidePreloader, { once: true });
         }
+        */
+
+        // Keep the preloader visible for at least 10 seconds.
+            const minimumDisplayTime = 5000;
+            const startTime = Date.now();
+
+            // Hide after the page has loaded AND the minimum time has passed.
+            const hidePreloader = () => {
+
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
+
+                setTimeout(() => {
+
+                    preloader.classList.add("hidden");
+
+                    setTimeout(() => preloader.remove(), 600);
+
+                }, remainingTime);
+            };
+
+            if (document.readyState === "complete") {
+                hidePreloader();
+            } else {
+                window.addEventListener("load", hidePreloader, { once: true });
+            }
     }
 
     // Scripts to load in order.
