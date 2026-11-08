@@ -45,31 +45,29 @@ managed here and applied across all pages.
 
     });
 
-    // Start the minimum display timer immediately.
-    const startTime = Date.now();
+    // Start playback and measure the minimum display time.
+    const playbackStarted = () => {
 
-    // Attempt video playback without blocking the timer.
-    video.play().catch(error => {
-        console.warn("Preloader video could not play:", error);
-    });
+        const startTime = Date.now();
 
-    // Wait for the page to finish loading.
-    pageLoaded.then(() => {
+        pageLoaded.then(() => {
 
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, 5000 - elapsed);
-
-        setTimeout(() => {
-
-            preloader.classList.add("hidden");
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, 5500 - elapsed);
 
             setTimeout(() => {
-                preloader.remove();
-            }, 600);
 
-        }, remaining);
+                preloader.classList.add("hidden");
 
-    });
+                setTimeout(() => {
+                    preloader.remove();
+                }, 600);
+
+            }, remaining);
+
+        });
+
+    };
 
     video.play().then(
         playbackStarted,
