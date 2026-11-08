@@ -26,11 +26,12 @@
                 accentColor: "rgb(155, 195, 55)",
             },
 
+
             "Free": {
                 title: "Free",
                 description: "Masters Project",
                 date: "Summer 2025",
-                image: "images/Free/Free_Video.mov",
+                image: "images/Free/Free_Video.mp4",
                 alt: "Masters Project: Free",
                 buttonText: "View",
                 link: "projects/free.html",
@@ -52,7 +53,7 @@
                 title: "Attribute Manager",
                 description: "Maya Attribute Plugin",
                 date: "Summer 2026",
-                image: "images/Attribute_Manager/Attribute_Manager.png",
+                image: "images/Attribute_Manager/Attribute_Manager.webp",
                 alt: "Attribute Manager",
                 buttonText: "View",
                 link: "attribute_manager.html",
@@ -86,7 +87,7 @@
                 title: "Shortfilm Production",
                 description: "by David Muddie",
                 date: "Role: VP Operator",
-                image: "images/Dave_Mudie/Shortfilm_Mudie.png",
+                image: "images/Dave_Mudie/Shortfilm_Mudie.webp",
                 alt: "Attribute Manager",
                 link: "attribute_manager.html",
                 buttonText: "Coming Soon",
