@@ -39,14 +39,17 @@ async function loadSiteHeader() {
 
         container.innerHTML = await response.text();
         
-        // Resolve desktop navigation links from the website root.
-        container.querySelectorAll("#nav a").forEach(link => {
-            link.href = resolveSitePath(link.getAttribute("href"));
+        // Resolve all header links from the website root.
+        container.querySelectorAll("a").forEach(link => {
+            const href = link.getAttribute("href");
+
+            if (href) {
+                link.href = resolveSitePath(href);
+            }
         });
 
         container.querySelectorAll(".site-logo").forEach(logo => {
             logo.src = resolveSitePath("images/Logo_THC/Logo_Navigation.svg");
-            
         });
 
         // -----------------------------------------------
