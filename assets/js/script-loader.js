@@ -16,14 +16,15 @@ managed here and applied across all pages.
     const SITE_BASE = new URL("../../", loaderURL);
 
     // Set up the preloader on the first entry in this tab.
-    function setupPreloader() {
+    // Set up the preloader on the first entry in this tab.
+function setupPreloader() {
 
     const preloader = document.getElementById("site-preloader");
     const video = document.getElementById("preloader-video");
 
     if (!preloader || !video) return;
 
-    // Only continue if this is the first entry in this tab.
+    // Only continue on the first entry in this tab.
     if (!document.documentElement.classList.contains("preloader-active")) {
         return;
     }
@@ -44,6 +45,33 @@ managed here and applied across all pages.
         }
 
     });
+
+    // Attempt video playback.
+    video.play().catch(error => {
+        console.warn("Preloader video playback failed:", error);
+    }).finally(() => {
+
+        const startTime = Date.now();
+
+        pageLoaded.then(() => {
+
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, 5500 - elapsed);
+
+            setTimeout(() => {
+
+                preloader.classList.add("hidden");
+
+                setTimeout(() => {
+                    preloader.remove();
+                }, 600);
+
+            }, remaining);
+
+        });
+
+    });
+}
 
     // Start playback and measure the minimum display time.
     const playbackStarted = () => {
