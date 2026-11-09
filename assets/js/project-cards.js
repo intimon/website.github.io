@@ -70,8 +70,31 @@
                 link: "projects/flourishing_beyond.html",
                 accentColor: "#cd5d19",
             },
+            
+            "Roto": {
+                title: "Elena Animation",
+                description: "Rotoscoping Animation",
+                date: "Spring 2023",
+                image: "images/Elena/Animation_Elena.mp4",
+                alt: "Rotoscoping Animation",
+                buttonText: "View",
+                link: "projects/rotoscoping.html",
+                accentColor: "#fff000",
+            },
 
-            // Featured Projects
+            "Duck": {
+                title: "What the Duck",
+                description: "2D Animation Project",
+                date: "Fall 2022",
+                image: "images/What_the_Duck/What the duck!.mp4",
+                alt: "What the duck! Animation Short",
+                buttonText: "View",
+                link: "projects/what_the_duck.html",
+                accentColor: "#cd5d19",
+            },
+
+            
+            // Featured Projects ----------------------------
             "RTR": {
                 title: "Realtime Roads",
                 description: "by Morgan Skillicorn",
@@ -203,5 +226,6 @@
     } else {
         loadProjectCards();
     }
+
 
     })(jQuery);

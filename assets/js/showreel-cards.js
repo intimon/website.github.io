@@ -79,11 +79,27 @@
             videoId: "tUCvpLvUoGc",
             accentColor: "var(--color-blue)"
         },
+        
         "Flourishing Beyond": {
             title: "Flourishing Beyond",
             videoId: "anFEgksKN49oC9",
             accentColor: "var(--color-blue)"
         },
+        
+        "Duck": {
+            title: "What the Duck",
+            videoId: "fBSXMfYXau8",
+            accentColor: "var(--color-blue)"
+        },
+        
+        "Wisemen": {
+            title: "4 Wise Men",
+            videoId: "E00GUmLXt1I",
+            accentColor: "var(--color-blue)"
+        },
+        
+        
+
 
     };
 
