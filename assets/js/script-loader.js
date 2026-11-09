@@ -16,92 +16,61 @@ managed here and applied across all pages.
     const SITE_BASE = new URL("../../", loaderURL);
 
     // Set up the preloader on the first entry in this tab.
-    // Set up the preloader on the first entry in this tab.
-function setupPreloader() {
+    function setupPreloader() {
 
-    const preloader = document.getElementById("site-preloader");
-    const video = document.getElementById("preloader-video");
+        const preloader = document.getElementById("site-preloader");
+        const video = document.getElementById("preloader-video");
 
-    if (!preloader || !video) return;
+        if (!preloader || !video) return;
 
-    // Only continue on the first entry in this tab.
-    if (!document.documentElement.classList.contains("preloader-active")) {
-        return;
-    }
-
-    // Resolve the video path from the website root.
-    video.src = new URL(
-        "images/Logo_THC/Logo_Roll_Animation.mp4",
-        SITE_BASE
-    ).href;
-
-    // Wait for the page to finish loading.
-    const pageLoaded = new Promise(resolve => {
-
-        if (document.readyState === "complete") {
-            resolve();
-        } else {
-            window.addEventListener("load", resolve, { once: true });
+        // Only continue on the first entry in this tab.
+        if (!document.documentElement.classList.contains("preloader-active")) {
+            return;
         }
 
-    });
+        // Resolve the video path from the website root.
+        video.src = new URL(
+            "images/Logo_THC/Logo_Roll_Animation.mp4",
+            SITE_BASE
+        ).href;
 
-    // Attempt video playback.
-    video.play().catch(error => {
-        console.warn("Preloader video playback failed:", error);
-    }).finally(() => {
+        // Wait for the page to finish loading.
+        const pageLoaded = new Promise(resolve => {
 
-        const startTime = Date.now();
-
-        pageLoaded.then(() => {
-
-            const elapsed = Date.now() - startTime;
-            const remaining = Math.max(0, 5500 - elapsed);
-
-            setTimeout(() => {
-
-                preloader.classList.add("hidden");
-
-                setTimeout(() => {
-                    preloader.remove();
-                }, 600);
-
-            }, remaining);
+            if (document.readyState === "complete") {
+                resolve();
+            } else {
+                window.addEventListener("load", resolve, { once: true });
+            }
 
         });
 
-    });
-}
+        // Attempt video playback.
+        video.play().catch(error => {
+            console.warn("Preloader video playback failed:", error);
+        }).finally(() => {
 
-    // Start playback and measure the minimum display time.
-    const playbackStarted = () => {
+            const startTime = Date.now();
 
-        const startTime = Date.now();
+            pageLoaded.then(() => {
 
-        pageLoaded.then(() => {
-
-            const elapsed = Date.now() - startTime;
-            const remaining = Math.max(0, 5500 - elapsed);
-
-            setTimeout(() => {
-
-                preloader.classList.add("hidden");
+                const elapsed = Date.now() - startTime;
+                const remaining = Math.max(0, 5500 - elapsed);
 
                 setTimeout(() => {
-                    preloader.remove();
-                }, 600);
 
-            }, remaining);
+                    preloader.classList.add("hidden");
+
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 600);
+
+                }, remaining);
+
+            });
 
         });
-
-    };
-
-    video.play().then(
-        playbackStarted,
-        playbackStarted
-    );
-}
+    }
 
     // Scripts to load in order.
     const scripts = [
