@@ -2866,7 +2866,7 @@ input, select, textarea {
 
 		.trusted-clients-container {
 			width: calc(100% - 80px);
-			max-width: 1100px;
+			max-width: 1180px;
 			margin: 0 auto;
 		}
 
@@ -2882,8 +2882,8 @@ input, select, textarea {
 
 	.trusted-clients-grid {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		column-gap: 70px;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		column-gap: 50px;
 		row-gap: 65px;
 		align-items: center;
 	}
@@ -2916,6 +2916,7 @@ input, select, textarea {
 	/* Tablet */
 	@media screen and (max-width: 980px) {
 		.trusted-clients-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 			column-gap: 35px;
 			row-gap: 40px;
 		}

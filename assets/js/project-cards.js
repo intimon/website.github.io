@@ -92,6 +92,51 @@
                 link: "projects/what_the_duck.html",
                 accentColor: "#cd5d19",
             },
+            
+            "Top Notch": {
+                title: "Top Notch Cafe",
+                description: "Cafe Menu Redesign",
+                date: "Summer 2025",
+                image: "images/Top_Notch/Menu_Mock_Up.webp",
+                alt: "Menu Redesign",
+                buttonText: "View",
+                link: "projects/top-notch.html",
+                accentColor: "#c02d31",
+            },
+            
+            "THC": {
+                title: "Personal Logo",
+                description: "Own Brand Design",
+                date: "Summer 2024",
+                image: "images/Logo_THC/Logo_Loop.mp4",
+                alt: "Logo Animation",
+                buttonText: "View",
+                link: "projects/THC.html",
+                accentColor: "rgba(70, 115, 170, 1)",
+            },
+            
+// needs work
+            "Neverending": {
+                title: "Michael Ende Covers",
+                description: "Book Cover Design",
+                date: "Spring 2019",
+                image: "images/Book/Cover_Design.webp",
+                alt: "Logo Animation",
+                buttonText: "View",
+                link: "projects/LOI.html",
+                accentColor: "rgb(58, 58, 58)",
+            },
+            
+            "LOI": {
+                title: "Library of Inspiration",
+                description: "Project to Inspire Kids for future Careers",
+                date: "2024",
+                image: "images/LOI/LOI_Animation.mp4",
+                alt: "Logo Animation",
+                buttonText: "View",
+                link: "projects/THC.html",
+                accentColor: "rgba(70, 115, 170, 1)",
+            },
 
             
             // Featured Projects ----------------------------
