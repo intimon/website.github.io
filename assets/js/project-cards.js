@@ -9,8 +9,8 @@
                 title: "Dreamweaver",           // This is the thick headline
                 description: "A music video exploring movement, colour and sound.",         //This is the Desciption Body Copy
                 date: "September 2024",         // This is the Date but may be also used as a Role, or Team Box
-                image: "images/Dreamweaver/Dreamweaver.png",        //File solution for the Picture/Videos in the box
-                buttonText: "View",             // This is what will be written in the Button
+                image: "images/Dreamweaver/Dreamweaver.webp",        //File solution for the Picture/Videos in the box
+                buttonText: "Coming Soon!",             // This is what will be written in the Button
                 link: "dreamweaver.html",       // This is where the button links to
                 accentColor: "#5f04ac",         // This is the accent colour for hover, etc.
             },
@@ -90,7 +90,7 @@
                 alt: "What the duck! Animation Short",
                 buttonText: "View",
                 link: "projects/what_the_duck.html",
-                accentColor: "#cd5d19",
+                accentColor: "#ffe000",
             },
             
             "Top Notch": {
