@@ -270,6 +270,11 @@ gap: 16px;
     padding: 64px 100px;
 }
 
+.project-section-green {
+    background-color: rgba(175, 210, 80, 0.5);
+    padding: 64px 100px;
+}
+
 .project-section-inner {
     width: 85%;
     max-width: 1380px;
