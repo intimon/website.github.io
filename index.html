@@ -12,46 +12,44 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- This is in here for the preloader! It needs to be loaded very quickly before everything else! -->
 		<style>
 			#site-preloader {
 				position: fixed;
 				inset: 0;
 				z-index: 999999;
-
 				display: none;
 				align-items: center;
 				justify-content: center;
-
 				background: #fff;
 				opacity: 1;
 				visibility: visible;
-
 				transition: opacity 0.6s ease, visibility 0.6s ease;
 			}
-
+			
 			html.preloader-active #site-preloader {
 				display: flex;
 			}
-
+			
 			#site-preloader video {
 				display: block;
 				width: 100%;
 				max-height: 100vh;
 				object-fit: contain;
 			}
-
+			
 			@media (min-width: 768px) {
 				#site-preloader video {
 					width: 75%;
 				}
 			}
-
+			
 			@media (min-width: 1440px) {
 				#site-preloader video {
 					width: 50%;
 				}
 			}
-
+			
 			#site-preloader.hidden {
 				opacity: 0;
 				pointer-events: none;
@@ -61,7 +59,7 @@
 			#site-preloader {
 				transition: opacity 0.6s ease;
 			}
-		</style>
+		</style> 
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
@@ -75,7 +73,7 @@
 		<meta property="og:url" content="https://intimon.github.io/website.github.io/" />
 		<meta property="og:title" content="Timon C. Holzer" />
 		<meta property="og:description" content="Freelance and Portfolio Page of a creative and technical Problemsolver!" />
-		<meta property="og:image" content="https://intimon.github.io/website.github.io/images/Logo_THC/Link-Image.webp" />
+		<meta property="og:image" content="https://intimon.github.io/website.github.io/images/Logo_THC/Link-Image_V1.webp" />
 	</head>
 
 	
