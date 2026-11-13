@@ -81,6 +81,7 @@ managed here and applied across all pages.
         "assets/js/util.js",
         "assets/js/main.js",
         "assets/js/site-config.js",
+        "assets/js/banner-dots.js",
         "assets/js/site-header.js",
         "assets/js/site-footer.js",
         "assets/js/project-cards.js",

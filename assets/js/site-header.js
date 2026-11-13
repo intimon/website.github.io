@@ -400,7 +400,29 @@ async function loadSiteHeader() {
                 console.log("Poster path:", poster);
             }
         }
+        
+        
+        // ------------------------------------------------------------
+        // Add the interactive dot-grid effect only on pages that request it.
+        // ------------------------------------------------------------
+        if (container.dataset.interactiveDots === "true") {
+            const banner = container.querySelector("#header-banner");
 
+            if (banner) {
+                banner.classList.add("interactive-dot-banner");
+
+                const canvas = document.createElement("canvas");
+                canvas.id = "banner-dots";
+                banner.appendChild(canvas);
+
+                // Initialise the dot-grid effect.
+                if (typeof initBannerDots === "function") {
+                    initBannerDots(canvas, banner);
+                }
+            }
+        }
+
+        
         // -----------------------------------------------
         // Set optional text
         // -----------------------------------------------
