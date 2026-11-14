@@ -7,9 +7,9 @@ window.initBannerDots = function (canvas, banner) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const spacing = 26;
+    const spacing = 20;
     const dotRadius = 1.8;
-    const influenceRadius = spacing * 10;
+    const influenceRadius = spacing * 7;
     const maxStretch = spacing;
 
     let width = 0;
@@ -21,6 +21,12 @@ window.initBannerDots = function (canvas, banner) {
     let strength = 10;
     let animationFrame = null;
 
+    const gradientRadius = 100;
+    const gradientColor = "rgba(0, 25, 75, 0.40)";
+    
+    const dotColorFar = { r: 20, g: 65, b: 120 };
+    const dotColorNear = { r: 255, g: 255, b: 255 };
+    
     function resizeCanvas() {
         const rect = banner.getBoundingClientRect();
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -52,15 +58,51 @@ window.initBannerDots = function (canvas, banner) {
     
     function draw() {
         ctx.clearRect(0, 0, width, height);
+        
+        // Draw a dark blue gradient around the cursor.
+        if (currentPointer && pointer) {
+            const gradient = ctx.createRadialGradient(
+                currentPointer.x,
+                currentPointer.y,
+                0,
+                currentPointer.x,
+                currentPointer.y,
+                gradientRadius
+            );
 
+            gradient.addColorStop(0, gradientColor);
+            gradient.addColorStop(1, "rgba(0, 25, 75, 0)");
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+        }
+        
         // Give all lines rounded ends.
         ctx.lineCap = "round";
 
         for (const dot of dots) {
-            // Draw the permanent white dot.
+            // Calculate dot colour based on its current line length.
+            // Smooth the colour transition.
+                const rawProgress = Math.min(dot.length / maxStretch, 1);
+
+                // Smoothstep interpolation.
+                const colorProgress =
+                    rawProgress * rawProgress * (3 - 2 * rawProgress);
+
+            const r = Math.round(
+                dotColorFar.r + (dotColorNear.r - dotColorFar.r) * colorProgress
+            );
+            const g = Math.round(
+                dotColorFar.g + (dotColorNear.g - dotColorFar.g) * colorProgress
+            );
+            const b = Math.round(
+                dotColorFar.b + (dotColorNear.b - dotColorFar.b) * colorProgress
+            );
+
+            // Draw the dot with its interpolated colour.
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "#ffffff";
+            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
             ctx.fill();
 
             let targetLength = 0;
@@ -85,7 +127,7 @@ window.initBannerDots = function (canvas, banner) {
 
             // Grow quickly, retract more slowly.
             const growSpeed = 0.25;
-            const retractSpeed = 0.008;
+            const retractSpeed = 0.05;
 
             const speed = targetLength > dot.length
                 ? growSpeed
