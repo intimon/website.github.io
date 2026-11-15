@@ -7,6 +7,7 @@ window.initBannerDots = function (canvas, banner) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Grid settings.
     const spacing = 20;
     const dotRadius = 1.8;
     const influenceRadius = spacing * 7;
@@ -16,17 +17,34 @@ window.initBannerDots = function (canvas, banner) {
     let height = 0;
     let dots = [];
 
+    // Cursor settings.
     let pointer = null;
     let currentPointer = null;
-    let strength = 10;
     let animationFrame = null;
 
+    // Click ripple settings.
+    let waves = [];
+
+    // Gradient settings.
     const gradientRadius = 100;
     const gradientColor = "rgba(0, 25, 75, 0.40)";
-    
+
+    // Dot colours.
     const dotColorFar = { r: 20, g: 65, b: 120 };
     const dotColorNear = { r: 255, g: 255, b: 255 };
-    
+
+    // Line animation settings.
+    const growSpeed = 0.25;
+    const retractSpeed = 0.05;
+    const lineWidth = 3.5;
+
+    // Ripple settings.
+    const rippleDuration = 1400;
+    const rippleDelay = 180;
+    const rippleMaxRadius = influenceRadius * 2.5;
+    const rippleTrailWidth = spacing * 5;
+    const rippleFrontWidth = spacing * 1.5;
+
     function resizeCanvas() {
         const rect = banner.getBoundingClientRect();
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -54,12 +72,13 @@ window.initBannerDots = function (canvas, banner) {
 
         draw();
     }
-    
-    
+
     function draw() {
         ctx.clearRect(0, 0, width, height);
-        
-        // Draw a dark blue gradient around the cursor.
+
+        const now = performance.now();
+
+        // Draw the cursor-following dark-blue gradient.
         if (currentPointer && pointer) {
             const gradient = ctx.createRadialGradient(
                 currentPointer.x,
@@ -76,35 +95,100 @@ window.initBannerDots = function (canvas, banner) {
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, width, height);
         }
-        
-        // Give all lines rounded ends.
+
+        // Rounded line ends.
         ctx.lineCap = "round";
 
         for (const dot of dots) {
-            // Calculate dot colour based on its current line length.
-            // Smooth the colour transition.
-                const rawProgress = Math.min(dot.length / maxStretch, 1);
 
-                // Smoothstep interpolation.
-                const colorProgress =
-                    rawProgress * rawProgress * (3 - 2 * rawProgress);
+            // Calculate click ripple influence.
+            let rippleInfluence = 0;
+
+            for (const wave of waves) {
+                const elapsed = now - wave.startTime;
+
+                if (elapsed < 0 || elapsed >= wave.duration) {
+                    continue;
+                }
+
+                const progress = elapsed / wave.duration;
+
+                // Expand the wave outwards.
+                const easedProgress =
+                    1 - Math.pow(1 - progress, 3);
+
+                const waveRadius =
+                    wave.maxRadius * easedProgress;
+
+                const dx = dot.x - wave.x;
+                const dy = dot.y - wave.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                const behindWave = waveRadius - distance;
+
+                let influence;
+
+                // Fading trail behind the wave.
+                if (behindWave >= 0) {
+                    influence = Math.max(
+                        0,
+                        1 - behindWave / rippleTrailWidth
+                    );
+                } else {
+                    // Soft advancing wavefront.
+                    influence = Math.max(
+                        0,
+                        1 + behindWave / rippleFrontWidth
+                    );
+                }
+
+                // Ripple gradually weakens over time.
+                const decay = Math.pow(1 - progress, 0.6);
+
+                rippleInfluence = Math.max(
+                    rippleInfluence,
+                    influence * decay
+                );
+            }
+
+            // Combine magnetic and ripple colour influence.
+            const magneticInfluence = Math.min(
+                dot.length / maxStretch,
+                1
+            );
+
+            const rawProgress = Math.max(
+                magneticInfluence,
+                rippleInfluence
+            );
+
+            // Smooth colour transition.
+            const colorProgress =
+                rawProgress * rawProgress *
+                (3 - 2 * rawProgress);
 
             const r = Math.round(
-                dotColorFar.r + (dotColorNear.r - dotColorFar.r) * colorProgress
-            );
-            const g = Math.round(
-                dotColorFar.g + (dotColorNear.g - dotColorFar.g) * colorProgress
-            );
-            const b = Math.round(
-                dotColorFar.b + (dotColorNear.b - dotColorFar.b) * colorProgress
+                dotColorFar.r +
+                (dotColorNear.r - dotColorFar.r) * colorProgress
             );
 
-            // Draw the dot with its interpolated colour.
+            const g = Math.round(
+                dotColorFar.g +
+                (dotColorNear.g - dotColorFar.g) * colorProgress
+            );
+
+            const b = Math.round(
+                dotColorFar.b +
+                (dotColorNear.b - dotColorFar.b) * colorProgress
+            );
+
+            // Draw the dot.
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
             ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
             ctx.fill();
 
+            // Calculate magnetic line length.
             let targetLength = 0;
 
             if (pointer && currentPointer) {
@@ -125,26 +209,28 @@ window.initBannerDots = function (canvas, banner) {
                 }
             }
 
-            // Grow quickly, retract more slowly.
-            const growSpeed = 0.25;
-            const retractSpeed = 0.05;
-
+            // Grow quickly and retract more slowly.
             const speed = targetLength > dot.length
                 ? growSpeed
                 : retractSpeed;
 
-            dot.length += (targetLength - dot.length) * speed;
+            dot.length +=
+                (targetLength - dot.length) * speed;
 
-            // Draw the line using its remembered direction.
+            // Draw the magnetic line.
             if (dot.length > 0.1) {
-                const endX = dot.x + Math.cos(dot.angle) * dot.length;
-                const endY = dot.y + Math.sin(dot.angle) * dot.length;
+                const endX =
+                    dot.x + Math.cos(dot.angle) * dot.length;
+
+                const endY =
+                    dot.y + Math.sin(dot.angle) * dot.length;
 
                 ctx.beginPath();
                 ctx.moveTo(dot.x, dot.y);
                 ctx.lineTo(endX, endY);
+
                 ctx.strokeStyle = "#ffffff";
-                ctx.lineWidth = 3.5;
+                ctx.lineWidth = lineWidth;
                 ctx.stroke();
             }
         }
@@ -153,21 +239,33 @@ window.initBannerDots = function (canvas, banner) {
     function animate() {
         animationFrame = null;
 
+        // Smooth cursor movement.
         if (pointer) {
             if (!currentPointer) {
                 currentPointer = { ...pointer };
             }
 
-            currentPointer.x += (pointer.x - currentPointer.x) * 0.18;
-            currentPointer.y += (pointer.y - currentPointer.y) * 0.18;
+            currentPointer.x +=
+                (pointer.x - currentPointer.x) * 0.18;
+
+            currentPointer.y +=
+                (pointer.y - currentPointer.y) * 0.18;
         }
+
+        // Remove completed ripples.
+        const now = performance.now();
+
+        waves = waves.filter(wave =>
+            now < wave.startTime + wave.duration
+        );
 
         draw();
 
-        // Keep animating until all trailing lines have disappeared.
+        // Continue while cursor, lines or ripples are active.
         const hasTrail = dots.some(dot => dot.length > 0.1);
+        const hasWaves = waves.length > 0;
 
-        if (pointer || hasTrail) {
+        if (pointer || hasTrail || hasWaves) {
             animationFrame = requestAnimationFrame(animate);
         } else {
             currentPointer = null;
@@ -181,8 +279,7 @@ window.initBannerDots = function (canvas, banner) {
         }
     }
 
-    
-    // Track the cursor across the entire browser window.
+    // Track cursor across the entire browser.
     window.addEventListener("pointermove", event => {
         const rect = banner.getBoundingClientRect();
 
@@ -194,7 +291,37 @@ window.initBannerDots = function (canvas, banner) {
         requestAnimation();
     });
 
-    // Retract the lines when the cursor leaves the browser.
+    // Create two expanding dot ripples on left-click.
+    window.addEventListener("pointerdown", event => {
+        if (event.button !== 0) return;
+
+        const rect = banner.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const startTime = performance.now();
+
+        waves.push({
+            x,
+            y,
+            startTime,
+            duration: rippleDuration,
+            maxRadius: rippleMaxRadius
+        });
+
+        waves.push({
+            x,
+            y,
+            startTime: startTime + rippleDelay,
+            duration: rippleDuration,
+            maxRadius: rippleMaxRadius
+        });
+
+        requestAnimation();
+    });
+
+    // Retract lines when cursor leaves the browser.
     document.addEventListener("pointerout", event => {
         if (!event.relatedTarget) {
             pointer = null;
@@ -202,13 +329,13 @@ window.initBannerDots = function (canvas, banner) {
         }
     });
 
-    // Also retract if the browser window loses focus.
+    // Retract lines when browser loses focus.
     window.addEventListener("blur", () => {
         pointer = null;
         requestAnimation();
     });
 
-
+    // Resize canvas when banner dimensions change.
     const resizeObserver = new ResizeObserver(resizeCanvas);
     resizeObserver.observe(banner);
 
