@@ -10,7 +10,7 @@ window.initBannerDots = function (canvas, banner) {
     // Grid settings.
     const spacing = 20;
     const dotRadius = 1.8;
-    const influenceRadius = spacing * 7;
+    const influenceRadius = spacing * 5;
     const maxStretch = spacing;
 
     let width = 0;
@@ -26,7 +26,7 @@ window.initBannerDots = function (canvas, banner) {
     let waves = [];
 
     // Gradient settings.
-    const gradientRadius = 100;
+    const gradientRadius = 50;
     const gradientColor = "rgba(0, 25, 75, 0.40)";
 
     // Dot colours.
@@ -35,15 +35,30 @@ window.initBannerDots = function (canvas, banner) {
 
     // Line animation settings.
     const growSpeed = 0.25;
-    const retractSpeed = 0.05;
+    const retractSpeed = 0.1;
     const lineWidth = 3.5;
 
     // Ripple settings.
-    const rippleDuration = 1400;
-    const rippleDelay = 180;
-    const rippleMaxRadius = influenceRadius * 2.5;
-    const rippleTrailWidth = spacing * 5;
-    const rippleFrontWidth = spacing * 1.5;
+    const rippleDuration = 1500;
+    const rippleMaxRadius = influenceRadius * 3.3;
+
+    // Main ripple settings.
+    const mainRipple = {
+        delay: 0,
+        radiusMultiplier: 1,
+        strength: 1,
+        trailWidth: spacing * 7,
+        frontWidth: spacing * 1.5
+    };
+
+    // Smaller following ripple settings.
+    const smallRipple = {
+        delay: 220,
+        radiusMultiplier: 0.65,
+        strength: 0.65,
+        trailWidth: spacing * 5,
+        frontWidth: spacing
+    };
 
     function resizeCanvas() {
         const rect = banner.getBoundingClientRect();
@@ -101,24 +116,19 @@ window.initBannerDots = function (canvas, banner) {
 
         for (const dot of dots) {
 
-            // Calculate click ripple influence.
+            // Calculate the influence of click ripples on this dot.
             let rippleInfluence = 0;
 
             for (const wave of waves) {
                 const elapsed = now - wave.startTime;
 
-                if (elapsed < 0 || elapsed >= wave.duration) {
-                    continue;
-                }
+                if (elapsed < 0 || elapsed >= wave.duration) continue;
 
                 const progress = elapsed / wave.duration;
 
                 // Expand the wave outwards.
-                const easedProgress =
-                    1 - Math.pow(1 - progress, 3);
-
-                const waveRadius =
-                    wave.maxRadius * easedProgress;
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                const waveRadius = wave.maxRadius * easedProgress;
 
                 const dx = dot.x - wave.x;
                 const dy = dot.y - wave.y;
@@ -126,37 +136,49 @@ window.initBannerDots = function (canvas, banner) {
 
                 const behindWave = waveRadius - distance;
 
+                // Create a fading trail behind the moving wave.
                 let influence;
 
-                // Fading trail behind the wave.
                 if (behindWave >= 0) {
                     influence = Math.max(
                         0,
-                        1 - behindWave / rippleTrailWidth
+                        1 - behindWave / wave.trailWidth
                     );
                 } else {
-                    // Soft advancing wavefront.
                     influence = Math.max(
                         0,
-                        1 + behindWave / rippleFrontWidth
+                        1 + behindWave / wave.frontWidth
                     );
                 }
 
-                // Ripple gradually weakens over time.
-                const decay = Math.pow(1 - progress, 0.6);
+                // Fade the ripple based on distance from the click.
+                const distanceProgress = Math.min(
+                    distance / wave.maxRadius,
+                    1
+                );
+
+                const decay = Math.pow(
+                    1 - distanceProgress,
+                    0.6
+                );
+
+                // Apply individual ripple strength.
+                const fadedInfluence =
+                    influence * decay * wave.strength;
 
                 rippleInfluence = Math.max(
                     rippleInfluence,
-                    influence * decay
+                    fadedInfluence
                 );
             }
 
-            // Combine magnetic and ripple colour influence.
+            // Calculate magnetic cursor influence for dot colour.
             const magneticInfluence = Math.min(
                 dot.length / maxStretch,
                 1
             );
 
+            // Combine magnetic and ripple colour influence.
             const rawProgress = Math.max(
                 magneticInfluence,
                 rippleInfluence
@@ -184,30 +206,37 @@ window.initBannerDots = function (canvas, banner) {
 
             // Draw the dot.
             ctx.beginPath();
-            ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+            ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 5);
             ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
             ctx.fill();
 
-            // Calculate magnetic line length.
-            let targetLength = 0;
+            // Calculate magnetic cursor influence.
+            let magneticLength = 0;
 
-            if (pointer && currentPointer) {
+            if (currentPointer) {
                 const dx = currentPointer.x - dot.x;
                 const dy = currentPointer.y - dot.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance > 0 && distance < influenceRadius) {
+                if (distance > 0) {
+                    // Always point towards the cursor.
                     dot.angle = Math.atan2(dy, dx);
 
-                    if (distance <= maxStretch) {
-                        targetLength = distance;
-                    } else {
-                        targetLength = maxStretch *
-                            (1 - (distance - maxStretch) /
-                            (influenceRadius - maxStretch));
+                    // Calculate normal magnetic line length.
+                    if (pointer && distance < influenceRadius) {
+                        if (distance <= maxStretch) {
+                            magneticLength = distance;
+                        } else {
+                            magneticLength = maxStretch *
+                                (1 - (distance - maxStretch) /
+                                (influenceRadius - maxStretch));
+                        }
                     }
                 }
             }
+
+            // Line length is controlled exclusively by the cursor.
+            const targetLength = magneticLength;
 
             // Grow quickly and retract more slowly.
             const speed = targetLength > dot.length
@@ -291,7 +320,7 @@ window.initBannerDots = function (canvas, banner) {
         requestAnimation();
     });
 
-    // Create two expanding dot ripples on left-click.
+    // Create a main ripple followed by a smaller ripple.
     window.addEventListener("pointerdown", event => {
         if (event.button !== 0) return;
 
@@ -302,20 +331,28 @@ window.initBannerDots = function (canvas, banner) {
 
         const startTime = performance.now();
 
+        // Main bright ripple.
         waves.push({
             x,
             y,
-            startTime,
+            startTime: startTime + mainRipple.delay,
             duration: rippleDuration,
-            maxRadius: rippleMaxRadius
+            maxRadius: rippleMaxRadius * mainRipple.radiusMultiplier,
+            strength: mainRipple.strength,
+            trailWidth: mainRipple.trailWidth,
+            frontWidth: mainRipple.frontWidth
         });
 
+        // Smaller ripple following behind.
         waves.push({
             x,
             y,
-            startTime: startTime + rippleDelay,
+            startTime: startTime + smallRipple.delay,
             duration: rippleDuration,
-            maxRadius: rippleMaxRadius
+            maxRadius: rippleMaxRadius * smallRipple.radiusMultiplier,
+            strength: smallRipple.strength,
+            trailWidth: smallRipple.trailWidth,
+            frontWidth: smallRipple.frontWidth
         });
 
         requestAnimation();
