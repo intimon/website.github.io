@@ -22,7 +22,7 @@
                 image: "images/MBWI/Motion_Graphics_Graz.mp4",
                 alt: "Project MBWI",
                 buttonText: "View",
-                link: "MBWI.html",
+                link: "projects/MBWI.html",
                 accentColor: "rgb(155, 195, 55)",
             },
 
